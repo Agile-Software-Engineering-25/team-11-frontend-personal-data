@@ -9,16 +9,16 @@ Else install it from [Docker](https://www.docker.com/get-started).
 
 # Setup
 
-Execute the following for starting the project:
+Execute the following commands when you clone the project for the first time:
+
+Make sure to execute this inside a bash environment (GitBash on windows)
 ```bash
-docker compose up -d
+npm run init
 ```
+and then this (no matter where)
 
-You can now access the project at [http://localhost:8080](http://localhost:8080).
-
-With following command you can shut down the project:
 ```bash
-docker compose down
+npm i
 ```
 
 # Commands
