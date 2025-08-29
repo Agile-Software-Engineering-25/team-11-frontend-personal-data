@@ -21,7 +21,11 @@ type AppProps = {
   basename?: string;
 };
 
-function App({ basename }: AppProps) {
+/**
+ * @param props - AppProps, also contains all customProps delivered from the rootUi
+ */
+function App(props: AppProps) {
+  const { basename } = props;
   return (
     <Provider store={store}>
       <ThemeProvider theme={{ [MATERIAL_THEME_ID]: muiTheme }}>
