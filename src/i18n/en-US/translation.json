@@ -3,7 +3,7 @@
     "home": {
       "title": "Home",
       "description": "This is the frontend-template project. Here you can find the technologies and tools used in this project.",
-      "weatherButton": "WEATHER"
+      "personalDataButton": "Personal Data"
     },
     "weather": {
       "title": "Weather",
@@ -11,6 +11,22 @@
       "getWeatherButton": "GET WEATHER",
       "weatherHeader": "Current Weather",
       "temperature": "Temperature"
+    },
+    "personalData": {
+      "title": "Personal Data",
+      "description": "Personal Data is shown here.",
+      "acardemicTitle": "academic Title",
+      "name": "Name",
+      "email": "E-Mail",
+      "address": "Adresse",
+      "salutation": "Salutation",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "birthday": "Birthday",
+      "telephone": "Telephone Number",
+      "country": "Country",
+      "city": "City",
+      "nationality": "Nationality"
     }
   }
 }
