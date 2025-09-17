@@ -63,14 +63,16 @@
       "studentID": "Matrikelnummer"
     },
     "personalDataEmployee": {
+      "Employee": "Mitarbeiter",
       "department": "Abteilung",
       "position": "Position",
       "employeeID": "Mitarbeiternummer"
     },
     "personalDataLecturers": {
-      "subject": "Fach",
-      "office": "Büro",
-      "employeeID": "Mitarbeiternummer"
+      "Lecturer": "Dozent",
+      "department": "Bereich",
+      "position": "Position",
+      "employeeID": "Dozentennummer"
     }
   },
   "common": {

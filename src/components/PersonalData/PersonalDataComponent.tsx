@@ -14,6 +14,8 @@ import countries from 'i18n-iso-countries';
 import deLocale from 'i18n-iso-countries/langs/de.json';
 countries.registerLocale(deLocale);
 import enLocale from 'i18n-iso-countries/langs/en.json';
+import PersonalDataLecturersComponent from '@components/PersonalData/PersonalDataLecturersComponent.tsx';
+import PersonalDataEmployeeComponent from '@components/PersonalData/PersonalDataEmployee.tsx';
 countries.registerLocale(enLocale);
 const PersonalDataComponent = () => {
   const { t, i18n } = useTranslation();
@@ -173,7 +175,9 @@ const PersonalDataComponent = () => {
           sx={{ height: 45 }}
         />
       </FormControl>
+      <PersonalDataEmployeeComponent></PersonalDataEmployeeComponent>
       <PersonalDataStudent></PersonalDataStudent>
+      <PersonalDataLecturersComponent></PersonalDataLecturersComponent>
       <FormControl sx={{ width: 272, mt: 3 }}>
         <ButtonGroup>
           <Button sx={{ textTransform: 'none' }} color="danger">

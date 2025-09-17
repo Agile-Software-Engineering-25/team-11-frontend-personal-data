@@ -63,14 +63,16 @@
       "studentID": "Student ID"
     },
     "personalDataEmployee": {
+      "Employee": "Employee",
       "department": "Department",
       "position": "Position",
       "employeeID": "Employee ID"
     },
-    "personalDataTeacher": {
-      "subject": "Subject",
-      "office": "Office",
-      "employeeID": "Employee ID"
+    "personalDataLecturers": {
+      "Lecturer": "Lecturer",
+      "department": "Department",
+      "position": "Position",
+      "employeeID": "Lecturers ID"
     }
   },
   "common": {
