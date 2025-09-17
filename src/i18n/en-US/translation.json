@@ -26,7 +26,56 @@
       "telephone": "Telephone Number",
       "country": "Country",
       "city": "City",
-      "nationality": "Nationality"
+      "nationality": "Nationality",
+      "street": "Street",
+      "houseNumber": "Number",
+      "postalCode": "Postal Code",
+      "courseOptions": [
+        "Computer Science",
+        "Business Informatics",
+        "Electrical Engineering",
+        "Mechanical Engineering",
+        "Business Administration",
+        "Economics",
+        "Mathematics",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Medicine",
+        "Psychology",
+        "Sociology",
+        "Political Science",
+        "Law",
+        "Architecture",
+        "Design",
+        "Communication Studies",
+        "Journalism",
+        "Sports Science",
+        "Philosophy",
+        "History"
+      ]
     }
+  },
+  "components": {
+    "personalDataStudent": {
+      "courseofstudy": "Course of Study",
+      "semester": "Semester",
+      "studentID": "Student ID"
+    },
+    "personalDataEmployee": {
+      "department": "Department",
+      "position": "Position",
+      "employeeID": "Employee ID"
+    },
+    "personalDataTeacher": {
+      "subject": "Subject",
+      "office": "Office",
+      "employeeID": "Employee ID"
+    }
+  },
+  "common": {
+    "back": "Back",
+    "edit": "Edit",
+    "finish": "Finish"
   }
 }

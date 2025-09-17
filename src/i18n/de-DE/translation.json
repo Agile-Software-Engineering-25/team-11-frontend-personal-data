@@ -25,8 +25,57 @@
       "birthday": "Geburtstag",
       "telephone": "Telefonnummer",
       "country": "Land",
-        "city": "Stadt",
-      "nationality": "Nationalität"
+      "city": "Stadt",
+      "nationality": "Nationalität",
+      "street": "Straße",
+      "houseNumber": "Nummer",
+      "postalCode": "Postleitzahl",
+      "courseOptions": [
+        "Informatik",
+        "Wirtschaftsinformatik",
+        "Elektrotechnik",
+        "Maschinenbau",
+        "Betriebswirtschaftslehre",
+        "Volkswirtschaftslehre",
+        "Mathematik",
+        "Physik",
+        "Chemie",
+        "Biologie",
+        "Medizin",
+        "Psychologie",
+        "Soziologie",
+        "Politikwissenschaft",
+        "Rechtswissenschaft",
+        "Architektur",
+        "Design",
+        "Kommunikationswissenschaft",
+        "Journalismus",
+        "Sportwissenschaft",
+        "Philosophie",
+        "Geschichte"
+      ]
     }
+  },
+  "components": {
+    "personalDataStudent": {
+      "courseofstudy": "Studiengang",
+      "semester": "Semester",
+      "studentID": "Matrikelnummer"
+    },
+    "personalDataEmployee": {
+      "department": "Abteilung",
+      "position": "Position",
+      "employeeID": "Mitarbeiternummer"
+    },
+    "personalDataLecturers": {
+      "subject": "Fach",
+      "office": "Büro",
+      "employeeID": "Mitarbeiternummer"
+    }
+  },
+  "common": {
+    "back": "Zurück",
+    "edit": "Bearbeiten",
+    "finish": "Fertig"
   }
 }

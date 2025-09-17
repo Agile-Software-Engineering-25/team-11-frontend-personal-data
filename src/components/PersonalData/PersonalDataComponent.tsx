@@ -5,14 +5,15 @@ import {
   FormControl,
   FormLabel,
 } from '@mui/joy';
-import { Button, Input } from '@agile-software/shared-components';
-import PersonalDataStudent from '@pages/personal-data/personalDataStudent.tsx';
+import Button from '../../../shared-components/src/components/Button/Button.tsx';
+import Input from '../../../shared-components/src/components/Input/Input.tsx';
+import PersonalDataStudent from '@components/PersonalData/PersonalDataStudentComponent.tsx';
 import { useTranslation } from 'react-i18next';
+import { useMemo } from 'react';
 import countries from 'i18n-iso-countries';
 import deLocale from 'i18n-iso-countries/langs/de.json';
 countries.registerLocale(deLocale);
 import enLocale from 'i18n-iso-countries/langs/en.json';
-import { useMemo } from 'react';
 countries.registerLocale(enLocale);
 const PersonalDataComponent = () => {
   const { t, i18n } = useTranslation();
@@ -73,6 +74,50 @@ const PersonalDataComponent = () => {
           />
         </FormControl>
       </Box>
+      <Box sx={{ display: 'flex', gap: 2 }}>
+        <FormControl sx={{ width: 450, mb: 1 }}>
+          <FormLabel>{t('pages.personalData.street')}</FormLabel>
+          <Input
+            color="neutral"
+            size="lg"
+            placeholder="Musterstraße"
+            readOnly
+            value="Bischöflich-Geistlicher-Rat-Josef-Zinnbauer-Straße"
+          />
+        </FormControl>
+        <FormControl sx={{ width: 90, mb: 1 }}>
+          <FormLabel>{t('pages.personalData.houseNumber')}</FormLabel>
+          <Input
+            type="number"
+            color="neutral"
+            size="lg"
+            placeholder="42"
+            readOnly
+            value="42"
+          />
+        </FormControl>
+        <FormControl sx={{ width: 360, mb: 1 }}>
+          <FormLabel>{t('pages.personalData.city')}</FormLabel>
+          <Input
+            color="neutral"
+            size="lg"
+            placeholder="Entenhausen"
+            readOnly
+            value="Hellschen-Heringsand-Unterschaar"
+          />
+        </FormControl>
+        <FormControl sx={{ width: 110, mb: 1 }}>
+          <FormLabel>{t('pages.personalData.postalCode')}</FormLabel>
+          <Input
+            type="number"
+            color="neutral"
+            size="lg"
+            placeholder="Entenhausen"
+            readOnly
+            value="12345"
+          />
+        </FormControl>
+      </Box>
       {/* Nicht editierbares Feld */}
       <Box sx={{ display: 'flex', gap: 2 }}>
         <FormControl sx={{ width: '50%', mb: 2 }}>
@@ -117,34 +162,28 @@ const PersonalDataComponent = () => {
           Todo: Datenbankanbindung
           Als vorläufiges Beispiel wird der Student eingetragen.*/}
       </FormControl>
-      <FormControl sx={{ width: 272, mb: 1 }}>
+      <FormControl sx={{ width: 272, mb: 2 }}>
         <FormLabel>{t('pages.personalData.nationality')}</FormLabel>
         <Autocomplete
           placeholder="Titel*"
           options={countryOptions}
+          value={countries.getNames(i18n.language === 'de' ? 'de' : 'en')['DE']}
           disableClearable
-          slotProps={{
-            input: { readOnly: true },
-          }}
+          readOnly
           sx={{ height: 45 }}
         />
       </FormControl>
       <PersonalDataStudent></PersonalDataStudent>
-      <ButtonGroup>
-        <Button sx={{ textTransform: 'none' }} color="danger">
-          {t('components.createpersonmanuell.backbutton')}
-        </Button>
-        <Button sx={{ textTransform: 'none' }} color="danger">
-          {t('components.createpersonmanuell.closebutton')}
-        </Button>
-        <Button sx={{ textTransform: 'none' }} color="success">
-          {t('components.createpersonmanuell.nextbutton')}
-        </Button>
-        ) : (
-        <Button sx={{ textTransform: 'none' }} color="success">
-          {t('components.createpersonmanuell.finishbutton')}
-        </Button>
-      </ButtonGroup>
+      <FormControl sx={{ width: 272, mt: 3 }}>
+        <ButtonGroup>
+          <Button sx={{ textTransform: 'none' }} color="danger">
+            {t('common.back')}
+          </Button>
+          <Button sx={{ textTransform: 'none' }} color="success">
+            {t('common.edit')}
+          </Button>
+        </ButtonGroup>
+      </FormControl>
     </>
   );
 };
