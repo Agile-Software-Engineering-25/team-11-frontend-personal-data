@@ -4,6 +4,7 @@ import {
   ButtonGroup,
   FormControl,
   FormLabel,
+  Divider
 } from '@mui/joy';
 import Button from '../../../shared-components/src/components/Button/Button.tsx';
 import Input from '../../../shared-components/src/components/Input/Input.tsx';
@@ -76,15 +77,27 @@ const PersonalDataComponent = () => {
           />
         </FormControl>
       </Box>
+      <FormControl sx={{ width: 325, mb: 2 }}>
+        <FormLabel>{t('pages.personalData.nationality')}</FormLabel>
+        <Autocomplete
+          placeholder="Titel*"
+          options={countryOptions}
+          value={countries.getNames(i18n.language === 'de' ? 'de' : 'en')['DE']}
+          disableClearable
+          readOnly
+          sx={{ height: 45 }}
+        />
+      </FormControl>
+      <Divider sx={{ pt: 0.1 }} />
       <Box sx={{ display: 'flex', gap: 2 }}>
-        <FormControl sx={{ width: 450, mb: 1 }}>
+        <FormControl sx={{ width: 325, mb: 1 }}>
           <FormLabel>{t('pages.personalData.street')}</FormLabel>
           <Input
             color="neutral"
             size="lg"
             placeholder="Musterstraße"
             readOnly
-            value="Bischöflich-Geistlicher-Rat-Josef-Zinnbauer-Straße"
+            value="Musterstraße"
           />
         </FormControl>
         <FormControl sx={{ width: 90, mb: 1 }}>
@@ -98,14 +111,14 @@ const PersonalDataComponent = () => {
             value="42"
           />
         </FormControl>
-        <FormControl sx={{ width: 360, mb: 1 }}>
+        <FormControl sx={{ width: 330, mb: 1 }}>
           <FormLabel>{t('pages.personalData.city')}</FormLabel>
           <Input
             color="neutral"
             size="lg"
             placeholder="Entenhausen"
             readOnly
-            value="Hellschen-Heringsand-Unterschaar"
+            value="Entenhausen"
           />
         </FormControl>
         <FormControl sx={{ width: 110, mb: 1 }}>
@@ -122,6 +135,19 @@ const PersonalDataComponent = () => {
       </Box>
       {/* Nicht editierbares Feld */}
       <Box sx={{ display: 'flex', gap: 2 }}>
+        <FormControl sx={{ width: 190, mb: 2 }}>
+          <FormLabel>{t('pages.personalData.country')}</FormLabel>
+          <Autocomplete
+            placeholder="Titel*"
+            options={countryOptions}
+            value={
+              countries.getNames(i18n.language === 'de' ? 'de' : 'en')['DE']
+            }
+            disableClearable
+            readOnly
+            sx={{ height: 45 }}
+          />
+        </FormControl>
         <FormControl sx={{ width: '50%', mb: 2 }}>
           <FormLabel>E-Mail*</FormLabel>
           <Input
@@ -157,24 +183,7 @@ const PersonalDataComponent = () => {
           />
         </FormControl>
       </Box>
-      <FormControl>
-        {/*Hier werden die jeweiligen Tätigkeiten angezeigt.
-          Die Auswahl lässt sich vom Nutzer nicht ändern und wird aus der
-          Datenbank übernommen.
-          Todo: Datenbankanbindung
-          Als vorläufiges Beispiel wird der Student eingetragen.*/}
-      </FormControl>
-      <FormControl sx={{ width: 272, mb: 2 }}>
-        <FormLabel>{t('pages.personalData.nationality')}</FormLabel>
-        <Autocomplete
-          placeholder="Titel*"
-          options={countryOptions}
-          value={countries.getNames(i18n.language === 'de' ? 'de' : 'en')['DE']}
-          disableClearable
-          readOnly
-          sx={{ height: 45 }}
-        />
-      </FormControl>
+      <Divider sx={{ pt: 0.1 }} />
       <PersonalDataEmployeeComponent></PersonalDataEmployeeComponent>
       <PersonalDataStudent></PersonalDataStudent>
       <PersonalDataLecturersComponent></PersonalDataLecturersComponent>
