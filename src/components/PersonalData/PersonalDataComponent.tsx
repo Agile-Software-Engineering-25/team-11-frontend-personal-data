@@ -56,17 +56,7 @@ const PersonalDataComponent = () => {
             readOnly
           />
         </FormControl>
-        <FormControl sx={{ width: 272, mb: 1 }}>
-          <FormLabel>{t('pages.personalData.lastName')}</FormLabel>
-          <Input
-            color="neutral"
-            size="lg"
-            placeholder="Mustermann"
-            value="Mustermann"
-            readOnly
-          />
-        </FormControl>
-        <FormControl sx={{ width: 272, mb: 1 }}>
+        <FormControl sx={{ width: 272, mb: 2 }}>
           <FormLabel>{t('pages.personalData.firstName')}</FormLabel>
           <Input
             color="neutral"
@@ -76,90 +66,30 @@ const PersonalDataComponent = () => {
             value="Max"
           />
         </FormControl>
-      </Box>
-      <FormControl sx={{ width: 325, mb: 2 }}>
-        <FormLabel>{t('pages.personalData.nationality')}</FormLabel>
-        <Autocomplete
-          placeholder="Titel*"
-          options={countryOptions}
-          value={countries.getNames(i18n.language === 'de' ? 'de' : 'en')['DE']}
-          disableClearable
-          readOnly
-          sx={{ height: 45 }}
-        />
-      </FormControl>
-      <Divider sx={{ pt: 0.1 }} />
-      <Box sx={{ display: 'flex', gap: 2 }}>
-        <FormControl sx={{ width: 325, mb: 1 }}>
-          <FormLabel>{t('pages.personalData.street')}</FormLabel>
+        <FormControl sx={{ width: 272, mb: 2 }}>
+          <FormLabel>{t('pages.personalData.lastName')}</FormLabel>
           <Input
             color="neutral"
             size="lg"
-            placeholder="Musterstraße"
+            placeholder="Mustermann"
+            value="Mustermann"
             readOnly
-            value="Musterstraße"
-          />
-        </FormControl>
-        <FormControl sx={{ width: 90, mb: 1 }}>
-          <FormLabel>{t('pages.personalData.houseNumber')}</FormLabel>
-          <Input
-            type="number"
-            color="neutral"
-            size="lg"
-            placeholder="42"
-            readOnly
-            value="42"
-          />
-        </FormControl>
-        <FormControl sx={{ width: 330, mb: 1 }}>
-          <FormLabel>{t('pages.personalData.city')}</FormLabel>
-          <Input
-            color="neutral"
-            size="lg"
-            placeholder="Entenhausen"
-            readOnly
-            value="Entenhausen"
-          />
-        </FormControl>
-        <FormControl sx={{ width: 110, mb: 1 }}>
-          <FormLabel>{t('pages.personalData.postalCode')}</FormLabel>
-          <Input
-            type="number"
-            color="neutral"
-            size="lg"
-            placeholder="Entenhausen"
-            readOnly
-            value="12345"
           />
         </FormControl>
       </Box>
-      {/* Nicht editierbares Feld */}
       <Box sx={{ display: 'flex', gap: 2 }}>
-        <FormControl sx={{ width: 190, mb: 2 }}>
-          <FormLabel>{t('pages.personalData.country')}</FormLabel>
+        <FormControl sx={{ width: 325, mb: 2 }}>
+          <FormLabel>{t('pages.personalData.nationality')}</FormLabel>
           <Autocomplete
             placeholder="Titel*"
             options={countryOptions}
-            value={
-              countries.getNames(i18n.language === 'de' ? 'de' : 'en')['DE']
-            }
+            value={countries.getNames(i18n.language === 'de' ? 'de' : 'en')['DE']}
             disableClearable
             readOnly
             sx={{ height: 45 }}
           />
         </FormControl>
-        <FormControl sx={{ width: '50%', mb: 2 }}>
-          <FormLabel>E-Mail*</FormLabel>
-          <Input
-            color="neutral"
-            size="lg"
-            placeholder="max.mustermann@mustermail.de"
-            value="max.mustermann@mustermail.de"
-            type="email"
-            readOnly
-          />
-        </FormControl>
-        <FormControl sx={{ width: 140, mb: 1 }}>
+        <FormControl sx={{ width: 272, mb: 2 }}>
           <FormLabel>{t('pages.personalData.birthday')}</FormLabel>
           <Input
             color="neutral"
@@ -169,10 +99,8 @@ const PersonalDataComponent = () => {
             value="0001-06-01"
           />
         </FormControl>
-        <FormControl>
-          <FormLabel sx={{ width: 272, mb: 1 }}>
-            {t('pages.personalData.telephone')}
-          </FormLabel>
+        <FormControl sx={{ width: 272, mb: 2 }}>
+          <FormLabel>{t('pages.personalData.telephone')}</FormLabel>
           <Input
             color="neutral"
             size="lg"
@@ -183,7 +111,65 @@ const PersonalDataComponent = () => {
           />
         </FormControl>
       </Box>
-      <Divider sx={{ pt: 0.1 }} />
+      <Box sx={{ display: 'flex', gap: 2 }}>
+        <FormControl sx={{ width: 325, mb: 2 }}>
+          <FormLabel>{t('pages.personalData.email')}</FormLabel>
+          <Input
+            color="neutral"
+            size="lg"
+            placeholder="max.mustermann@mustermail.de"
+            value="max.mustermann@mustermail.de"
+            type="email"
+            readOnly
+          />
+        </FormControl>
+      </Box>
+      <Divider sx={{ mt: 2, mb: 2 }} />
+      <Box sx={{ display: 'flex', gap: 2 }}>
+        <FormControl sx={{ width: 325, mb: 2 }}>
+          <FormLabel>{t('pages.personalData.street')}</FormLabel>
+          <Input
+            color="neutral"
+            size="lg"
+            placeholder="Musterstraße"
+            readOnly
+            value="Musterstraße"
+          />
+        </FormControl>
+        <FormControl sx={{ width: 127, mb: 2 }}>
+          <FormLabel>{t('pages.personalData.houseNumber')}</FormLabel>
+          <Input
+            type="number"
+            color="neutral"
+            size="lg"
+            placeholder="42"
+            readOnly
+            value="42"
+          />
+        </FormControl>
+        <FormControl sx={{ width: 127, mb: 2 }}>
+          <FormLabel>{t('pages.personalData.postalCode')}</FormLabel>
+          <Input
+            type="number"
+            color="neutral"
+            size="lg"
+            placeholder="Entenhausen"
+            readOnly
+            value="12345"
+          />
+        </FormControl>
+        <FormControl sx={{ width: 272, mb: 2 }}>
+          <FormLabel>{t('pages.personalData.city')}</FormLabel>
+          <Input
+            color="neutral"
+            size="lg"
+            placeholder="Entenhausen"
+            readOnly
+            value="Entenhausen"
+          />
+        </FormControl>
+      </Box>
+      <Divider sx={{ mt: 2, mb: 2 }} />
       <PersonalDataEmployeeComponent></PersonalDataEmployeeComponent>
       <PersonalDataStudent></PersonalDataStudent>
       <PersonalDataLecturersComponent></PersonalDataLecturersComponent>
