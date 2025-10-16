@@ -171,8 +171,12 @@ const PersonalDataComponent = () => {
       </Box>
       <Divider sx={{ mt: 2, mb: 2 }} />
       <PersonalDataEmployeeComponent></PersonalDataEmployeeComponent>
-      <PersonalDataStudent></PersonalDataStudent>
-      <PersonalDataLecturersComponent></PersonalDataLecturersComponent>
+      <Box sx={{ mt: 3 }}>
+        <PersonalDataStudent></PersonalDataStudent>
+      </Box>
+      <Box sx={{ mt: 3 }}>
+        <PersonalDataLecturersComponent></PersonalDataLecturersComponent>
+      </Box>
       <FormControl sx={{ width: 272, mt: 3 }}>
         <ButtonGroup>
           <Button sx={{ textTransform: 'none' }} color="danger">
