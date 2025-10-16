@@ -3,7 +3,7 @@
     "home": {
       "title": "Startseite",
       "description": "Das ist das frontend-template Projekt. Hier werden die Technologien und Tools vorgestellt, die in diesem Projekt verwendet werden.",
-      "weatherButton": "WETTER"
+      "personalDataButton": "Persönliche Daten"
     },
     "weather": {
       "title": "Wetter",
@@ -11,6 +11,73 @@
       "getWeatherButton": "WETTER ABRUFEN",
       "weatherHeader": "Aktuelles Wetter",
       "temperature": "Temperatur"
+    },
+    "personalData": {
+      "title": "Persönliche Daten",
+      "description": "Hier werden die personenbezogenen Daten des Benutzers angezeigt.",
+      "acardemicTitle": "Akademischer Titel",
+      "name": "Name",
+      "email": "E-Mail",
+      "address": "Adresse",
+      "salutation": "Anrede",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "birthday": "Geburtstag",
+      "telephone": "Telefonnummer",
+      "country": "Land",
+      "city": "Stadt",
+      "nationality": "Nationalität",
+      "street": "Straße",
+      "houseNumber": "Nummer",
+      "postalCode": "Postleitzahl",
+      "courseOptions": [
+        "Informatik",
+        "Wirtschaftsinformatik",
+        "Elektrotechnik",
+        "Maschinenbau",
+        "Betriebswirtschaftslehre",
+        "Volkswirtschaftslehre",
+        "Mathematik",
+        "Physik",
+        "Chemie",
+        "Biologie",
+        "Medizin",
+        "Psychologie",
+        "Soziologie",
+        "Politikwissenschaft",
+        "Rechtswissenschaft",
+        "Architektur",
+        "Design",
+        "Kommunikationswissenschaft",
+        "Journalismus",
+        "Sportwissenschaft",
+        "Philosophie",
+        "Geschichte"
+      ]
     }
+  },
+  "components": {
+    "personalDataStudent": {
+      "courseofstudy": "Studiengang",
+      "semester": "Semester",
+      "studentID": "Matrikelnummer"
+    },
+    "personalDataEmployee": {
+      "Employee": "Mitarbeiter",
+      "department": "Abteilung",
+      "position": "Position",
+      "employeeID": "Mitarbeiternummer"
+    },
+    "personalDataLecturers": {
+      "Lecturer": "Dozent",
+      "department": "Bereich",
+      "position": "Position",
+      "employeeID": "Dozentennummer"
+    }
+  },
+  "common": {
+    "back": "Zurück",
+    "edit": "Bearbeiten",
+    "finish": "Fertig"
   }
 }

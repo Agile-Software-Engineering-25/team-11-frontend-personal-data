@@ -3,7 +3,7 @@
     "home": {
       "title": "Home",
       "description": "This is the frontend-template project. Here you can find the technologies and tools used in this project.",
-      "weatherButton": "WEATHER"
+      "personalDataButton": "Personal Data"
     },
     "weather": {
       "title": "Weather",
@@ -11,6 +11,73 @@
       "getWeatherButton": "GET WEATHER",
       "weatherHeader": "Current Weather",
       "temperature": "Temperature"
+    },
+    "personalData": {
+      "title": "Personal Data",
+      "description": "Personal Data is shown here.",
+      "acardemicTitle": "academic Title",
+      "name": "Name",
+      "email": "E-Mail",
+      "address": "Adresse",
+      "salutation": "Salutation",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "birthday": "Birthday",
+      "telephone": "Telephone Number",
+      "country": "Country",
+      "city": "City",
+      "nationality": "Nationality",
+      "street": "Street",
+      "houseNumber": "Number",
+      "postalCode": "Postal Code",
+      "courseOptions": [
+        "Computer Science",
+        "Business Informatics",
+        "Electrical Engineering",
+        "Mechanical Engineering",
+        "Business Administration",
+        "Economics",
+        "Mathematics",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Medicine",
+        "Psychology",
+        "Sociology",
+        "Political Science",
+        "Law",
+        "Architecture",
+        "Design",
+        "Communication Studies",
+        "Journalism",
+        "Sports Science",
+        "Philosophy",
+        "History"
+      ]
     }
+  },
+  "components": {
+    "personalDataStudent": {
+      "courseofstudy": "Course of Study",
+      "semester": "Semester",
+      "studentID": "Student ID"
+    },
+    "personalDataEmployee": {
+      "Employee": "Employee",
+      "department": "Department",
+      "position": "Position",
+      "employeeID": "Employee ID"
+    },
+    "personalDataLecturers": {
+      "Lecturer": "Lecturer",
+      "department": "Department",
+      "position": "Position",
+      "employeeID": "Lecturers ID"
+    }
+  },
+  "common": {
+    "back": "Back",
+    "edit": "Edit",
+    "finish": "Finish"
   }
 }
