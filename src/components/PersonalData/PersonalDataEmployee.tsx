@@ -1,33 +1,53 @@
-import { Typography, FormControl, FormLabel, Box } from '@mui/joy';
+import { FormControl, FormLabel, Box, Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/joy';
 import Input from '../../../shared-components/src/components/Input/Input.tsx';
 import { useTranslation } from 'react-i18next';
 
 const PersonalDataEmployeeComponent = () => {
   const { t } = useTranslation();
   return (
-    <>
-      <Typography level={'h3'}>
-        {t('components.personalDataEmployee.Employee')}
-      </Typography>
-      <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
-        <FormControl>
-          <FormLabel>
-            {t('components.personalDataEmployee.department')}
-          </FormLabel>
-          <Input readOnly value="Gebäudereinigung" />
-        </FormControl>
-        <FormControl>
-          <FormLabel>{t('components.personalDataEmployee.position')}</FormLabel>
-          <Input readOnly value="Putzkraft" />
-        </FormControl>
-        <FormControl>
-          <FormLabel>
-            {t('components.personalDataEmployee.employeeID')}
-          </FormLabel>
-          <Input placeholder="123456" readOnly value="123456" />
-        </FormControl>
-      </Box>
-    </>
+    <Accordion>
+      <AccordionSummary>
+        <Typography level={'h3'}>
+          {t('components.personalDataEmployee.Employee')}
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
+          <FormControl sx={{ width: 325, mb: 2 }}>
+            <FormLabel>
+              {t('components.personalDataEmployee.department')}
+            </FormLabel>
+            <Input
+              color="neutral"
+              size="lg"
+              readOnly
+              value="Gebäudereinigung"
+            />
+          </FormControl>
+          <FormControl sx={{ width: 272, mb: 2 }}>
+            <FormLabel>{t('components.personalDataEmployee.position')}</FormLabel>
+            <Input
+              color="neutral"
+              size="lg"
+              readOnly
+              value="Putzkraft"
+            />
+          </FormControl>
+          <FormControl sx={{ width: 272, mb: 2 }}>
+            <FormLabel>
+              {t('components.personalDataEmployee.employeeID')}
+            </FormLabel>
+            <Input
+              color="neutral"
+              size="lg"
+              placeholder="123456"
+              readOnly
+              value="123456"
+            />
+          </FormControl>
+        </Box>
+      </AccordionDetails>
+    </Accordion>
   );
 };
 
