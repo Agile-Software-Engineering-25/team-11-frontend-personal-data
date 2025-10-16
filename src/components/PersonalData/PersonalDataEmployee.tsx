@@ -1,5 +1,13 @@
-import { FormControl, FormLabel, Box, Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/joy';
-import Input from '../../../shared-components/src/components/Input/Input.tsx';
+import {
+  FormControl,
+  Input,
+  FormLabel,
+  Box,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from '@mui/joy';
 import { useTranslation } from 'react-i18next';
 
 const PersonalDataEmployeeComponent = () => {
@@ -25,13 +33,10 @@ const PersonalDataEmployeeComponent = () => {
             />
           </FormControl>
           <FormControl sx={{ width: 272, mb: 2 }}>
-            <FormLabel>{t('components.personalDataEmployee.position')}</FormLabel>
-            <Input
-              color="neutral"
-              size="lg"
-              readOnly
-              value="Putzkraft"
-            />
+            <FormLabel>
+              {t('components.personalDataEmployee.position')}
+            </FormLabel>
+            <Input color="neutral" size="lg" readOnly value="Putzkraft" />
           </FormControl>
           <FormControl sx={{ width: 272, mb: 2 }}>
             <FormLabel>

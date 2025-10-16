@@ -1,5 +1,13 @@
-import { FormControl, FormLabel, Box, Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/joy';
-import Input from '../../../shared-components/src/components/Input/Input.tsx';
+import {
+  FormControl,
+  Input,
+  FormLabel,
+  Box,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from '@mui/joy';
 import { useTranslation } from 'react-i18next';
 
 const PersonalDataStudentComponent = () => {
@@ -24,7 +32,9 @@ const PersonalDataStudentComponent = () => {
             />
           </FormControl>
           <FormControl sx={{ width: 272, mb: 2 }}>
-            <FormLabel>{t('components.personalDataStudent.semester')}</FormLabel>
+            <FormLabel>
+              {t('components.personalDataStudent.semester')}
+            </FormLabel>
             <Input
               color="neutral"
               size="lg"
@@ -34,7 +44,9 @@ const PersonalDataStudentComponent = () => {
             />
           </FormControl>
           <FormControl sx={{ width: 272, mb: 2 }}>
-            <FormLabel>{t('components.personalDataStudent.studentID')}</FormLabel>
+            <FormLabel>
+              {t('components.personalDataStudent.studentID')}
+            </FormLabel>
             <Input
               color="neutral"
               size="lg"
