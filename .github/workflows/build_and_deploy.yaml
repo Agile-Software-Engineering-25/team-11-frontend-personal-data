@@ -44,13 +44,14 @@ jobs:
             ${{ secrets.MINIO_ACCESS_KEY }} \
             ${{ secrets.MINIO_SECRET_KEY }}
 
-      - name: Clear existing files in bucket
+      - name: Clear existing files in subfolder
         run: |
-          $HOME/minio-binaries/mc rm --recursive --force minio/${{ secrets.BUCKET_NAME }} || echo "No existing files to remove"
+          $HOME/minio-binaries/mc rm --recursive --force minio/${{ secrets.BUCKET_NAME }}/persoenliche-daten/ || echo "No existing files to remove"
+
 
       - name: Upload dist files to MinIO
         run: |
-          $HOME/minio-binaries/mc cp --recursive dist/ minio/${{ secrets.BUCKET_NAME }}/persoenliche-daten
+          $HOME/minio-binaries/mc cp --recursive dist/ minio/${{ secrets.BUCKET_NAME }}/persoenliche-daten/
 
       - name: Set bucket to public (optional)
         run: |
