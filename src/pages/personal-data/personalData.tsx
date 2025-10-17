@@ -5,17 +5,11 @@ import countries from 'i18n-iso-countries';
 import deLocale from 'i18n-iso-countries/langs/de.json';
 countries.registerLocale(deLocale);
 import enLocale from 'i18n-iso-countries/langs/en.json';
-import { useMemo } from 'react';
 countries.registerLocale(enLocale);
 import PersonalDataComponent from '@components/PersonalData/PersonalDataComponent.tsx';
 
 const PersonalData = () => {
-  const { t, i18n } = useTranslation();
-  const countryOptions = useMemo(() => {
-    return Object.values(
-      countries.getNames(i18n.language === 'de' ? 'de' : 'en')
-    );
-  }, [i18n.language]);
+  const { t } = useTranslation();
 
   return (
     <Sheet sx={{ padding: 2, maxWidth: 900, mx: 'auto', borderRadius: 2 }}>
