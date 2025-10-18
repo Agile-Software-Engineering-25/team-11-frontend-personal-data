@@ -2,12 +2,12 @@ import {
   Autocomplete,
   Box,
   ButtonGroup,
+  Button,
   FormControl,
   FormLabel,
-  Divider
+  Input,
+  Divider,
 } from '@mui/joy';
-import Button from '../../../shared-components/src/components/Button/Button.tsx';
-import Input from '../../../shared-components/src/components/Input/Input.tsx';
 import PersonalDataStudent from '@components/PersonalData/PersonalDataStudentComponent.tsx';
 import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
@@ -83,7 +83,9 @@ const PersonalDataComponent = () => {
           <Autocomplete
             placeholder="Titel*"
             options={countryOptions}
-            value={countries.getNames(i18n.language === 'de' ? 'de' : 'en')['DE']}
+            value={
+              countries.getNames(i18n.language === 'de' ? 'de' : 'en')['DE']
+            }
             disableClearable
             readOnly
             sx={{ height: 45 }}

@@ -1,8 +1,4 @@
-import {
-  Box,
-  Typography,
-  Sheet,
-} from '@mui/joy';
+import { Box, Typography, Sheet } from '@mui/joy';
 import LanguageSelectorComponent from '@components/LanguageSelectorComponent/LanguageSelectorComponent.tsx';
 import { useTranslation } from 'react-i18next';
 import countries from 'i18n-iso-countries';
@@ -11,7 +7,7 @@ countries.registerLocale(deLocale);
 import enLocale from 'i18n-iso-countries/langs/en.json';
 import { useMemo } from 'react';
 countries.registerLocale(enLocale);
-import PersonalDataComponent  from '@components/PersonalData/PersonalDataComponent.tsx';
+import PersonalDataComponent from '@components/PersonalData/PersonalDataComponent.tsx';
 
 const PersonalData = () => {
   const { t, i18n } = useTranslation();
