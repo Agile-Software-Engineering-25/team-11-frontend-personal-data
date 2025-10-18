@@ -60,19 +60,22 @@
     "personalDataStudent": {
       "courseofstudy": "Studiengang",
       "semester": "Semester",
-      "studentID": "Matrikelnummer"
+      "studentID": "Matrikelnummer",
+      "status": "Status",
+      "cohort": "Jahrgang"
     },
     "personalDataEmployee": {
       "Employee": "Mitarbeiter",
+      "employeeID": "Mitarbeiternummer",
       "department": "Abteilung",
-      "position": "Position",
-      "employeeID": "Mitarbeiternummer"
+      "office_number": "Büronummer",
+      "working_time_modell": "Arbeitszeitmodell"
     },
     "personalDataLecturers": {
       "Lecturer": "Dozent",
-      "department": "Bereich",
-      "position": "Position",
-      "employeeID": "Dozentennummer"
+      "field_chair": "Fachgebiet",
+      "titel": "Titel",
+      "employee_status": "Beschäftigungsstatus"
     }
   },
   "common": {

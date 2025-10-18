@@ -57,23 +57,26 @@
     }
   },
   "components": {
-    "personalDataStudent": {
-      "courseofstudy": "Course of Study",
-      "semester": "Semester",
-      "studentID": "Student ID"
-    },
-    "personalDataEmployee": {
-      "Employee": "Employee",
-      "department": "Department",
-      "position": "Position",
-      "employeeID": "Employee ID"
-    },
-    "personalDataLecturers": {
-      "Lecturer": "Lecturer",
-      "department": "Department",
-      "position": "Position",
-      "employeeID": "Lecturers ID"
-    }
+"personalDataStudent": {
+  "courseofstudy": "Course of Study",
+  "semester": "Semester",
+  "studentID": "Matriculation Number",
+  "status": "Status",
+  "cohort": "Cohort"
+},
+"personalDataEmployee": {
+  "Employee": "Employee",
+  "employeeID": "Employee Number",
+  "department": "Department",
+  "office_number": "Office Number",
+  "working_time_modell": "Working Time Model"
+},
+"personalDataLecturers": {
+  "Lecturer": "Lecturer",
+  "field_chair": "Field / Chair",
+  "titel": "Title",
+  "employee_status": "Employment Status"
+}
   },
   "common": {
     "back": "Back",
