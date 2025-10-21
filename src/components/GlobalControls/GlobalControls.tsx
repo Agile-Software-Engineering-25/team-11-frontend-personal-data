@@ -1,7 +1,6 @@
 import { Box, Button, Typography, IconButton } from '@mui/joy';
 import { useState } from 'react';
 import LanguageSelectorComponent from '../LanguageSelectorComponent/LanguageSelectorComponent';
-import TmpThemeSelectorComponent from '../TmpThemeSelectorComponent/TmpThemeSelectorComponent';
 import { useNavigate } from 'react-router';
 
 const GlobalControls = () => {
@@ -53,7 +52,6 @@ const GlobalControls = () => {
         {showLangTheme && (
           <Box sx={{ mt: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
             <LanguageSelectorComponent />
-            <TmpThemeSelectorComponent />
           </Box>
         )}
       </Box>
