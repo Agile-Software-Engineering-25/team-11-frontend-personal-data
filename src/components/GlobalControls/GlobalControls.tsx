@@ -1,8 +1,7 @@
-import { Box, Button, Typography, IconButton } from '@mui/joy';
+import { Box, Button, IconButton, Typography } from '@mui/joy';
 import { useState } from 'react';
-import LanguageSelectorComponent from '../LanguageSelectorComponent/LanguageSelectorComponent';
-import TmpThemeSelectorComponent from '../TmpThemeSelectorComponent/TmpThemeSelectorComponent';
 import { useNavigate } from 'react-router';
+import LanguageSelectorComponent from '../LanguageSelectorComponent/LanguageSelectorComponent';
 
 const GlobalControls = () => {
   const navigate = useNavigate();
@@ -40,7 +39,7 @@ const GlobalControls = () => {
           }}
         >
           <Typography level="h4" sx={{ fontWeight: 'bold' }}>
-            Select Language / Theme
+            Select Language
           </Typography>
           <IconButton
             size="sm"
@@ -53,7 +52,6 @@ const GlobalControls = () => {
         {showLangTheme && (
           <Box sx={{ mt: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
             <LanguageSelectorComponent />
-            <TmpThemeSelectorComponent />
           </Box>
         )}
       </Box>
@@ -90,23 +88,9 @@ const GlobalControls = () => {
             <Button
               variant="soft"
               color="neutral"
-              onClick={() => navigate('/weather')}
+              onClick={() => navigate('/personal-data')}
             >
-              Weather Page (i18n)
-            </Button>
-            <Button
-              variant="soft"
-              color="neutral"
-              onClick={() => navigate('/colors')}
-            >
-              Joy Color Showcase
-            </Button>
-            <Button
-              variant="soft"
-              color="neutral"
-              onClick={() => navigate('/user')}
-            >
-              User Data Showcase
+              Personal Data
             </Button>
           </Box>
         )}

@@ -1,10 +1,22 @@
 {
   "name": "@ase/frontendtemplate",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
+  "description": "This is a template project. Fork it and customize it to your needs.",
+  "homepage": "https://github.com/Agile-Software-Engineering-25/team-11-frontend-personal-data#readme",
+  "bugs": {
+    "url": "https://github.com/Agile-Software-Engineering-25/team-11-frontend-personal-data/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Agile-Software-Engineering-25/team-11-frontend-personal-data.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
+  "main": "eslint.config.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0 --port 8080",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint src/**/*.{ts,tsx}",
@@ -15,7 +27,7 @@
     "ci": "start-server-and-test dev http://localhost:5173 cy:run"
   },
   "dependencies": {
-    "@agile-software/shared-components": "^2.0.0",
+    "@agile-software/shared-components": "^2.3.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/joy": "^5.0.0-beta.52",
@@ -55,6 +67,7 @@
     "@typescript-eslint/parser": "^8.39.0",
     "@vitejs/plugin-react": "^4.7.0",
     "cypress": "^14.5.3",
+    "esbuild": "^0.25.9",
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",

@@ -4,12 +4,12 @@ import {
   createCustomJoyTheme,
   createCustomMuiTheme,
 } from '@agile-software/shared-components';
+import { THEME_ID as MATERIAL_THEME_ID, ThemeProvider } from '@mui/material';
 import {
   CssBaseline,
-  THEME_ID as MATERIAL_THEME_ID,
-  ThemeProvider,
-} from '@mui/material';
-import { CssVarsProvider as JoyCssVarsProvider, GlobalStyles } from '@mui/joy';
+  CssVarsProvider as JoyCssVarsProvider,
+  GlobalStyles,
+} from '@mui/joy';
 import './i18n';
 import { Provider } from 'react-redux';
 import store from '@stores/index.ts';
@@ -32,14 +32,13 @@ function App(props: AppProps) {
       <ThemeProvider theme={{ [MATERIAL_THEME_ID]: muiTheme }}>
         <JoyCssVarsProvider
           theme={joyTheme}
-          defaultMode="system"
+          defaultMode="light"
           modeStorageKey="joy-mode"
           colorSchemeStorageKey="joy-color-scheme"
         >
           <CssBaseline />
           <GlobalStyles
             styles={(theme) => ({
-              // Ensure html and body have proper background
               html: {
                 backgroundColor: theme.vars.palette.background.body,
                 minHeight: '100%',

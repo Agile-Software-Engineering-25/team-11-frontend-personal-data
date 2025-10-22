@@ -2,9 +2,20 @@ This is a template project. Fork it and customize it to your needs.
 
 This project contains example use cases for all technologies listed below. (It is not pretty but that is not the point)
 
+# Prerequierment
+
+Make sure you have Docker installed in you System. 
+Else install it from [Docker](https://www.docker.com/get-started).
+
 # Setup
 
 Execute the following commands when you clone the project for the first time:
+
+Make sure to execute this inside a bash environment (GitBash on windows)
+```bash
+npm run init
+```
+and then this (no matter where)
 
 ```bash
 npm i
@@ -108,14 +119,6 @@ API docs: https://axios-http.com/docs/api_intro
 ### Custom Types
 
 Organize your custom types and enums in dedicated files located in the `@types/` directory. In the `@types/` directory, you can put your `customTypes.ts` files and import them into your application.
-
-# shared-components
-
-This project uses a custom component library. $\to$ shared-components.
-
-It is a git submodule located at the root of the project.
-
-You can use the library as any other npm package. If you want to change anything on the library see the Contribution Documentation: [Contribute to shared-components](https://agile-software-engineering-25.github.io/documentation/docs/Frontend/shared-components/developing)
 
 ## Single-spa microfrontend
 

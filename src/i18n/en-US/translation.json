@@ -3,8 +3,7 @@
     "home": {
       "title": "Home",
       "description": "This is the frontend-template project. Here you can find the technologies and tools used in this project.",
-      "weatherButton": "WEATHER",
-      "welcomeMessage": "Welcome, {{name}}!"
+      "personalDataButton": "Personal Data"
     },
     "weather": {
       "title": "Weather",
@@ -12,6 +11,76 @@
       "getWeatherButton": "GET WEATHER",
       "weatherHeader": "Current Weather",
       "temperature": "Temperature"
+    },
+    "personalData": {
+      "title": "Personal Data",
+      "description": "Personal Data is shown here.",
+      "acardemicTitle": "academic Title",
+      "name": "Name",
+      "email": "E-Mail",
+      "address": "Adresse",
+      "salutation": "Salutation",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "birthday": "Birthday",
+      "telephone": "Telephone Number",
+      "country": "Country",
+      "city": "City",
+      "nationality": "Nationality",
+      "street": "Street",
+      "houseNumber": "Number",
+      "postalCode": "Postal Code",
+      "courseOptions": [
+        "Computer Science",
+        "Business Informatics",
+        "Electrical Engineering",
+        "Mechanical Engineering",
+        "Business Administration",
+        "Economics",
+        "Mathematics",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Medicine",
+        "Psychology",
+        "Sociology",
+        "Political Science",
+        "Law",
+        "Architecture",
+        "Design",
+        "Communication Studies",
+        "Journalism",
+        "Sports Science",
+        "Philosophy",
+        "History"
+      ]
     }
+  },
+  "components": {
+    "personalDataStudent": {
+      "courseofstudy": "Course of Study",
+      "semester": "Semester",
+      "studentID": "Matriculation Number",
+      "status": "Status",
+      "cohort": "Cohort"
+    },
+    "personalDataEmployee": {
+      "Employee": "Employee",
+      "employeeID": "Employee Number",
+      "department": "Department",
+      "office_number": "Office Number",
+      "working_time_modell": "Working Time Model"
+    },
+    "personalDataLecturers": {
+      "Lecturer": "Lecturer",
+      "field_chair": "Field / Chair",
+      "titel": "Title",
+      "employee_status": "Employment Status"
+    }
+  },
+  "common": {
+    "back": "Back",
+    "edit": "Edit",
+    "finish": "Finish"
   }
 }

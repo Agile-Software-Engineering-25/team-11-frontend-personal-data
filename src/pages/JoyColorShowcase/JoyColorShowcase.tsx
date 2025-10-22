@@ -1,38 +1,45 @@
 import {
+  Alert,
+  Avatar,
+  Badge,
   Box,
   Button,
-  Typography,
   Card,
   CardContent,
-  Chip,
-  IconButton,
-  Alert,
-  Badge,
-  Avatar,
-  LinearProgress,
-  CircularProgress,
-  Input,
-  Textarea,
-  Select,
-  Option,
   Checkbox,
-  Radio,
-  Switch,
-  Slider,
-  Link,
-  Stack,
-  Grid,
+  Chip,
+  CircularProgress,
   Divider,
+  Grid,
+  IconButton,
+  Input,
+  LinearProgress,
+  Link,
+  Option,
+  Radio,
+  Select,
+  Slider,
+  Stack,
+  Switch,
+  Textarea,
+  Typography,
 } from '@mui/joy';
+import type { ColorPaletteProp, VariantProp } from '@mui/joy/styles';
 
 const JoyColorShowcase = () => {
   // Joy UI's 5 default color palettes
-  const colors = ['primary', 'neutral', 'danger', 'success', 'warning'];
+  const colors: ColorPaletteProp[] = [
+    'primary',
+    'neutral',
+    'danger',
+    'success',
+    'warning',
+  ];
 
   // Joy UI's 4 global variants
-  const variants = ['solid', 'soft', 'outlined', 'plain'];
+  const variants: VariantProp[] = ['solid', 'soft', 'outlined', 'plain'];
 
-  const ComponentShowcase = ({ color }) => (
+  const ComponentShowcase = ({ color }: { color: ColorPaletteProp }) => (
     <Card sx={{ mb: 3 }}>
       <CardContent>
         <Typography level="h3" sx={{ mb: 2, textTransform: 'capitalize' }}>
