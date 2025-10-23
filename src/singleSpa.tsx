@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOMClient from 'react-dom/client';
+import * as ReactDOMClient from 'react-dom/client';
 import singleSpaReact from 'single-spa-react';
 import { cssLifecycleFactory } from 'vite-plugin-single-spa/ex';
 import App from './App';
