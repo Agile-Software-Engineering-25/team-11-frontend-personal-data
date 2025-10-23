@@ -34,7 +34,7 @@ const PersonalDataComponent = () => {
       <Box sx={{ display: 'flex', gap: 2 }}>
         {/* Editierbares Feld */}
         <FormControl sx={{ width: 155, mb: 2 }}>
-          <FormLabel>{t('pages.personalData.acardemicTitle')}</FormLabel>
+          <FormLabel>{t('pages.personalData.academicTitle')}</FormLabel>
           <Autocomplete
             placeholder="Titel*"
             options={['Prof.', 'Dr.', 'Prof. Dr.']}

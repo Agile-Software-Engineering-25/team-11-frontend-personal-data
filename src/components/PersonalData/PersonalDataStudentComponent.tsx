@@ -31,7 +31,9 @@ const PersonalDataStudentComponent = () => {
           }}
         >
           <FormControl sx={{ width: '100%' }}>
-            <FormLabel>{t('components.personalDataStudent.status')}</FormLabel>
+            <FormLabel>
+              {t('components.personalDataStudent.study_status')}
+            </FormLabel>
             <Input
               color="neutral"
               size="lg"
@@ -56,7 +58,7 @@ const PersonalDataStudentComponent = () => {
 
           <FormControl sx={{ width: '100%' }}>
             <FormLabel>
-              {t('components.personalDataStudent.studentID')}
+              {t('components.personalDataStudent.matriculation_number')}
             </FormLabel>
             <Input
               color="neutral"
@@ -74,7 +76,7 @@ const PersonalDataStudentComponent = () => {
             }}
           >
             <FormLabel>
-              {t('components.personalDataStudent.courseofstudy')}
+              {t('components.personalDataStudent.degree_program')}
             </FormLabel>
             <Input
               color="neutral"

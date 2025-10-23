@@ -15,7 +15,7 @@
     "personalData": {
       "title": "Persönliche Daten",
       "description": "Hier werden die personenbezogenen Daten des Benutzers angezeigt.",
-      "acardemicTitle": "Akademischer Titel",
+      "academicTitle": "Akademischer Titel",
       "name": "Name",
       "email": "E-Mail",
       "address": "Adresse",
@@ -58,23 +58,23 @@
   },
   "components": {
     "personalDataStudent": {
-      "courseofstudy": "Studiengang",
+      "matriculation_number": "Matrikelnummer",
+      "degree_program": "Studiengang",
       "semester": "Semester",
-      "studentID": "Matrikelnummer",
-      "status": "Status",
+      "study_status": "Studienstatus",
       "cohort": "Jahrgang"
     },
     "personalDataEmployee": {
       "Employee": "Mitarbeiter",
-      "employeeID": "Mitarbeiternummer",
+      "employee_number": "Mitarbeitendennummer",
       "department": "Abteilung",
-      "position": "Position"
+      "office_number": "Büro-Nummer",
+      "working_time_model": "Arbeitszeitmodell"
     },
     "personalDataLecturers": {
       "Lecturer": "Dozent",
-      "department": "Bereich",
-      "position": "Position",
-      "employeeID": "Dozentennummer"
+      "field_chair": "Fachgebiet / Lehrstuhl",
+      "employment_status": "Beschäftigungsstatus"
     }
   },
   "common": {

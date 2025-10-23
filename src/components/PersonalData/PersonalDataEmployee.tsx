@@ -60,7 +60,7 @@ const PersonalDataEmployeeComponent = () => {
 
           <FormControl sx={{ width: '100%' }}>
             <FormLabel>
-              {t('components.personalDataEmployee.employeeID')}
+              {t('components.personalDataEmployee.employee_number')}
             </FormLabel>
             <Input
               color="neutral"
@@ -76,7 +76,7 @@ const PersonalDataEmployeeComponent = () => {
             }}
           >
             <FormLabel>
-              {t('components.personalDataEmployee.working_time_modell')}
+              {t('components.personalDataEmployee.working_time_model')}
             </FormLabel>
             <Input
               color="neutral"

@@ -28,52 +28,39 @@ const PersonalDataLecturersComponent = () => {
             gridTemplateColumns: {
               xs: '1fr',
               sm: '1fr 1fr',
-              md: 'repeat(4, minmax(200px, 1fr))',
+              md: 'repeat(3, minmax(200px, 1fr))',
             },
           }}
         >
           <FormControl sx={{ width: '100%' }}>
             <FormLabel>
-              {t('components.personalDataEmployee.department')}
+              {t('components.personalDataLecturers.field_chair')}
             </FormLabel>
             <Input
               color="neutral"
               size="lg"
               placeholder="Reinigung"
               readOnly
-              value="Gebäudereinigung"
+              value="Informatik"
             />
           </FormControl>
 
           <FormControl sx={{ width: '100%' }}>
             <FormLabel>
-              {t('components.personalDataEmployee.office_number')}
+              {t('pages.personalData.academicTitle')}
             </FormLabel>
             <Input
               color="neutral"
               size="lg"
               placeholder="B-123"
               readOnly
-              value="B-123"
+              value="Prof. Dr."
             />
           </FormControl>
 
           <FormControl sx={{ width: '100%' }}>
             <FormLabel>
-              {t('components.personalDataEmployee.employeeID')}
-            </FormLabel>
-            <Input
-              color="neutral"
-              size="lg"
-              placeholder="123456"
-              readOnly
-              value="123456"
-            />
-          </FormControl>
-
-          <FormControl sx={{ width: '100%' }}>
-            <FormLabel>
-              {t('components.personalDataEmployee.working_time_modell')}
+              {t('components.personalDataLecturers.employment_status')}
             </FormLabel>
             <Input
               color="neutral"

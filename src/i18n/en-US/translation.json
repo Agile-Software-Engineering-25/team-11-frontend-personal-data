@@ -15,7 +15,7 @@
     "personalData": {
       "title": "Personal Data",
       "description": "Personal Data is shown here.",
-      "acardemicTitle": "academic Title",
+      "academicTitle": "academic Title",
       "name": "Name",
       "email": "E-Mail",
       "address": "Adresse",
@@ -58,24 +58,23 @@
   },
   "components": {
 "personalDataStudent": {
-  "courseofstudy": "Course of Study",
+  "matriculation_number": "Matriculation Number",
+  "degree_program": "Degree Program",
   "semester": "Semester",
-  "studentID": "Matriculation Number",
-  "status": "Status",
+  "study_status": "Study Status",
   "cohort": "Cohort"
 },
 "personalDataEmployee": {
   "Employee": "Employee",
-  "employeeID": "Employee Number",
+  "employee_number": "Employee Number",
   "department": "Department",
   "office_number": "Office Number",
-  "working_time_modell": "Working Time Model"
+  "working_time_model": "Working Time Model"
 },
 "personalDataLecturers": {
   "Lecturer": "Lecturer",
   "field_chair": "Field / Chair",
-  "titel": "Title",
-  "employee_status": "Employment Status"
+  "employment_status": "Employment Status"
 }
   },
   "common": {
