@@ -17,8 +17,6 @@ countries.registerLocale(deLocale);
 import enLocale from 'i18n-iso-countries/langs/en.json';
 import PersonalDataLecturersComponent from '@components/PersonalData/PersonalDataLecturersComponent.tsx';
 import PersonalDataEmployeeComponent from '@components/PersonalData/PersonalDataEmployee.tsx';
-import useUser from '@/hooks/useUser';
-
 countries.registerLocale(enLocale);
 const PersonalDataComponent = () => {
   const { t, i18n } = useTranslation();
@@ -27,8 +25,6 @@ const PersonalDataComponent = () => {
       countries.getNames(i18n.language === 'de' ? 'de' : 'en')
     );
   }, [i18n.language]);
-  const user = useUser();
-
   return (
     <>
       <Box sx={{ display: 'flex', gap: 2 }}>
@@ -67,7 +63,7 @@ const PersonalDataComponent = () => {
             size="lg"
             placeholder="Max"
             readOnly
-            value={user.getFirstName()}
+            value="Max"
           />
         </FormControl>
         <FormControl sx={{ width: 272, mb: 2 }}>
@@ -76,7 +72,7 @@ const PersonalDataComponent = () => {
             color="neutral"
             size="lg"
             placeholder="Mustermann"
-            value={user.getLastName()}
+            value="Mustermann"
             readOnly
           />
         </FormControl>
@@ -124,7 +120,7 @@ const PersonalDataComponent = () => {
             color="neutral"
             size="lg"
             placeholder="max.mustermann@mustermail.de"
-            value={user.getEmail()}
+            value="max.mustermann@mustermail.de"
             type="email"
             readOnly
           />
