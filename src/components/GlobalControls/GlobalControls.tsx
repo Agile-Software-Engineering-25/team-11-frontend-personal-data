@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import { Box, Button, Typography, IconButton } from '@mui/joy';
 import { useState } from 'react';
 import LanguageSelectorComponent from '../LanguageSelectorComponent/LanguageSelectorComponent';
@@ -118,4 +116,3 @@ const GlobalControls = () => {
 };
 
 export default GlobalControls;
->>>>>>> 36288e1 (Team 10 ase 37 login (#14))
