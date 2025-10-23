@@ -11,7 +11,6 @@ const ENTRY_POINT = 'src/singleSpa.tsx';
 const NPM_EXTERNALS: string[] = [
   'react',
   'react-dom',
-  'react-dom/client',
   '@mui/material',
   '@mui/joy',
   'axios',
