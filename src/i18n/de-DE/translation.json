@@ -60,13 +60,15 @@
     "personalDataStudent": {
       "courseofstudy": "Studiengang",
       "semester": "Semester",
-      "studentID": "Matrikelnummer"
+      "studentID": "Matrikelnummer",
+      "status": "Status",
+      "cohort": "Jahrgang"
     },
     "personalDataEmployee": {
       "Employee": "Mitarbeiter",
+      "employeeID": "Mitarbeiternummer",
       "department": "Abteilung",
-      "position": "Position",
-      "employeeID": "Mitarbeiternummer"
+      "position": "Position"
     },
     "personalDataLecturers": {
       "Lecturer": "Dozent",
