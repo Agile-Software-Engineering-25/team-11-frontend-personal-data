@@ -68,14 +68,13 @@
       "Employee": "Mitarbeiter",
       "employeeID": "Mitarbeiternummer",
       "department": "Abteilung",
-      "office_number": "Büronummer",
-      "working_time_modell": "Arbeitszeitmodell"
+      "position": "Position"
     },
     "personalDataLecturers": {
       "Lecturer": "Dozent",
-      "field_chair": "Fachgebiet",
-      "titel": "Titel",
-      "employee_status": "Beschäftigungsstatus"
+      "department": "Bereich",
+      "position": "Position",
+      "employeeID": "Dozentennummer"
     }
   },
   "common": {
