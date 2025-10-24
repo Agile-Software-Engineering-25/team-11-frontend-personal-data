@@ -24,8 +24,17 @@ const PersonalData = () => {
           padding: 1.5,
         }}
       >
-        <Box sx={{ width: 290, flexShrink: 0 }}>
-          <Typography level="h1">{t('pages.personalData.title')}</Typography>
+        <Box sx={{ width: 500, flexShrink: 0, minWidth: 0 }}>
+          <Typography
+            level="h1"
+            sx={{
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            {t('pages.personalData.title')}
+          </Typography>
         </Box>
         <Box sx={{ minHeight: 68, width: 175, flexShrink: 0 }}>
           <LanguageSelectorComponent />
