@@ -29,6 +29,38 @@ const PersonalDataComponent = () => {
   }, [i18n.language]);
   const user = useUser();
 
+  useEffect(() => {
+    if (user.getRole() === 'student') {
+      setUserData(
+        new Student({
+          id: 'b7acb825-4e70-49e4-84a1-bf5dc7c8f509',
+          dateOfBirth: '2000-01-01',
+          address: 'Test Address 1',
+          phoneNumber: '123456789',
+          username: 'test-stud@sau-portal.de',
+          firstName: 'Test',
+          lastName: 'Stud',
+          email: 'test-stud@sau-portal.de',
+          matriculationNumber: '123456',
+          degreeProgram: 'Computer Science',
+          semester: 1,
+          studyStatus: 'ENROLLED',
+          cohort: 'BIN-T23-F4',
+        })
+      );
+    }
+  }, [user]);
+
+  // Send a GET request
+  useEffect(() => {
+    const url =
+      'https://sau-portal.de/team-11-api/api/v1/users';
+
+    const response = axios.get(url, {
+      withCredentials: true,
+    });
+    console.log(response);
+  }, [user]);
   return (
     <>
       <Box sx={{ display: 'flex', gap: 2 }}>
