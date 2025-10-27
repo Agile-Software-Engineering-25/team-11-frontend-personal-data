@@ -1,16 +1,5 @@
-import {
-  Autocomplete,
-  Box,
-  ButtonGroup,
-  Button,
-  FormControl,
-  FormLabel,
-  Input,
-  Divider,
-} from '@mui/joy';
-import PersonalDataStudent from '@components/PersonalData/PersonalDataStudentComponent.tsx';
-import { useTranslation } from 'react-i18next';
-import { useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import axios from 'axios';
 import countries from 'i18n-iso-countries';
 import deLocale from 'i18n-iso-countries/langs/de.json';
 countries.registerLocale(deLocale);
