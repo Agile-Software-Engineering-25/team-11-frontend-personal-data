@@ -9,8 +9,13 @@ import {
   Typography,
 } from '@mui/joy';
 import { useTranslation } from 'react-i18next';
+import type { UserData } from '@/@types/UserData.tsx';
 
-const PersonalDataEmployeeComponent = () => {
+interface Props {
+  userData: UserData | null;
+}
+
+const PersonalDataEmployeeComponent = ({ userData }: Props) => {
   const { t } = useTranslation();
   return (
     <Accordion>
@@ -41,7 +46,7 @@ const PersonalDataEmployeeComponent = () => {
               size="lg"
               placeholder="Reinigung"
               readOnly
-              value="Gebäudereinigung"
+              value={userData?.department}
             />
           </FormControl>
 
@@ -54,7 +59,7 @@ const PersonalDataEmployeeComponent = () => {
               size="lg"
               placeholder="B-123"
               readOnly
-              value="B-123"
+              value={userData?.officeNumber}
             />
           </FormControl>
 
@@ -67,7 +72,7 @@ const PersonalDataEmployeeComponent = () => {
               size="lg"
               placeholder="123456"
               readOnly
-              value="123456"
+              value={userData?.employeeNumber}
             />
           </FormControl>
           <FormControl
@@ -83,7 +88,7 @@ const PersonalDataEmployeeComponent = () => {
               size="lg"
               placeholder="Vollzeit"
               readOnly
-              value="Teilzeit"
+              value={userData?.workingTimeModel}
             />
           </FormControl>
         </Box>

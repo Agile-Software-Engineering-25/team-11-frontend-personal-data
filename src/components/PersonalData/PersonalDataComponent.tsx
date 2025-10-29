@@ -2,14 +2,35 @@ import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import countries from 'i18n-iso-countries';
 import deLocale from 'i18n-iso-countries/langs/de.json';
-countries.registerLocale(deLocale);
 import enLocale from 'i18n-iso-countries/langs/en.json';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Divider,
+  FormControl,
+  FormLabel,
+  Input,
+  Autocomplete,
+} from '@mui/joy';
+import PersonalDataStudent from '@components/PersonalData/PersonalDataStudentComponent.tsx';
 import PersonalDataLecturersComponent from '@components/PersonalData/PersonalDataLecturersComponent.tsx';
 import PersonalDataEmployeeComponent from '@components/PersonalData/PersonalDataEmployee.tsx';
 import useUser from '@/hooks/useUser';
+import { useTranslation } from 'react-i18next';
+import {
+  type UserData,
+  Student,
+  Lecturer,
+  Employee,
+} from '/Users/sanojananandarajah/Projekte/Agile/team-11-frontend-personal-data/src/@types/UserData.tsx';
+import useAxiosInstance from '@hooks/useAxiosInstance.ts';
 
+countries.registerLocale(deLocale);
 countries.registerLocale(enLocale);
+
 const PersonalDataComponent = () => {
+  const [userData, setUserData] = useState<UserData | null>(null);
   const { t, i18n } = useTranslation();
   const countryOptions = useMemo(() => {
     return Object.values(
@@ -18,8 +39,32 @@ const PersonalDataComponent = () => {
   }, [i18n.language]);
   const user = useUser();
 
+  const axiosInstance = useAxiosInstance('https://sau-portal.de/team-11-api');
+
+  console.log('User ID:', user.getUserId());
+  console.log('Full user object:', user);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userId = user.getUserId();
+        if (!userId) return;
+        const response = await axiosInstance.get(`/api/v1/users/${userId}`);
+        console.log('API Response:', response.data);
+        setUserData(response.data);
+      } catch (error) {
+        console.error('API Error:', error);
+      }
+    };
+
+    fetchUserData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // <- nur einmal beim Mount
+  console.log(user.getRole());
+/*
   useEffect(() => {
     if (user.getRole() === 'student') {
+      // @ts-ignore
       setUserData(
         new Student({
           id: 'b7acb825-4e70-49e4-84a1-bf5dc7c8f509',
@@ -35,21 +80,15 @@ const PersonalDataComponent = () => {
           semester: 1,
           studyStatus: 'ENROLLED',
           cohort: 'BIN-T23-F4',
+          role: user.getRole(),
         })
       );
     }
-  }, [user]);
+  }, [user]);+
 
-  // Send a GET request
-  useEffect(() => {
-    const url =
-      'https://sau-portal.de/team-11-api/api/v1/users';
+ */
 
-    const response = axios.get(url, {
-      withCredentials: true,
-    });
-    console.log(response);
-  }, [user]);
+
   return (
     <>
       <Box sx={{ display: 'flex', gap: 2 }}>
@@ -88,7 +127,7 @@ const PersonalDataComponent = () => {
             size="lg"
             placeholder="Max"
             readOnly
-            value={user.getFirstName()}
+            value={userData?.firstName}
           />
         </FormControl>
         <FormControl sx={{ width: 272, mb: 2 }}>
@@ -97,7 +136,7 @@ const PersonalDataComponent = () => {
             color="neutral"
             size="lg"
             placeholder="Mustermann"
-            value={user.getLastName()}
+            value={userData?.lastName}
             readOnly
           />
         </FormControl>
@@ -123,7 +162,13 @@ const PersonalDataComponent = () => {
             size="lg"
             type="date"
             readOnly
-            value="0001-06-01"
+            value={
+              userData?.dateOfBirth
+                ? typeof userData.dateOfBirth === 'string'
+                  ? userData.dateOfBirth
+                  : userData.dateOfBirth.toISOString().split('T')[0]
+                : ''
+            }
           />
         </FormControl>
         <FormControl sx={{ width: 272, mb: 2 }}>
@@ -134,7 +179,7 @@ const PersonalDataComponent = () => {
             placeholder="+49 123 4567890"
             type="tel"
             readOnly
-            value="+49 123 4567890"
+            value={userData?.phoneNumber}
           />
         </FormControl>
       </Box>
@@ -160,7 +205,7 @@ const PersonalDataComponent = () => {
             size="lg"
             placeholder="Musterstraße"
             readOnly
-            value="Musterstraße"
+            value={userData?.address}
           />
         </FormControl>
         <FormControl sx={{ width: 127, mb: 2 }}>
@@ -171,38 +216,46 @@ const PersonalDataComponent = () => {
             size="lg"
             placeholder="42"
             readOnly
-            value="42"
+            value={userData?.houseNumber}
           />
         </FormControl>
-        <FormControl sx={{ width: 127, mb: 2 }}>
-          <FormLabel>{t('pages.personalData.postalCode')}</FormLabel>
-          <Input
-            type="number"
-            color="neutral"
-            size="lg"
-            placeholder="Entenhausen"
-            readOnly
-            value="12345"
-          />
-        </FormControl>
-        <FormControl sx={{ width: 272, mb: 2 }}>
-          <FormLabel>{t('pages.personalData.city')}</FormLabel>
-          <Input
-            color="neutral"
-            size="lg"
-            placeholder="Entenhausen"
-            readOnly
-            value="Entenhausen"
-          />
-        </FormControl>
+        <>
+          <FormControl sx={{ width: 127, mb: 2 }}>
+            <FormLabel>{t('pages.personalData.postalCode')}</FormLabel>
+            <Input
+              type="number"
+              color="neutral"
+              size="lg"
+              placeholder="Entenhausen"
+              readOnly
+              value="12345"
+            />
+          </FormControl>
+          <FormControl sx={{ width: 272, mb: 2 }}>
+            <FormLabel>{t('pages.personalData.city')}</FormLabel>
+            <Input
+              color="neutral"
+              size="lg"
+              placeholder="Entenhausen"
+              readOnly
+              value="Entenhausen"
+            />
+          </FormControl>
+        </>
       </Box>
       <Divider sx={{ mt: 2, mb: 2 }} />
-      <PersonalDataEmployeeComponent></PersonalDataEmployeeComponent>
+      {user.getRole() === 'employee' && (
+        <PersonalDataEmployeeComponent userData={userData} />
+      )}
       <Box sx={{ mt: 3 }}>
-        <PersonalDataStudent></PersonalDataStudent>
+        {user.getRole() === 'student' && (
+          <PersonalDataStudent userData={userData} />
+        )}
       </Box>
       <Box sx={{ mt: 3 }}>
-        <PersonalDataLecturersComponent></PersonalDataLecturersComponent>
+        {user.getRole() === 'lecturer' && (
+          <PersonalDataLecturersComponent userData={userData} />
+        )}
       </Box>
       <FormControl sx={{ width: 272, mt: 3 }}>
         <ButtonGroup>
