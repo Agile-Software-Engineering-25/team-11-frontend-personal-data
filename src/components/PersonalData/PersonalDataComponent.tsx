@@ -1,8 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
-import axios from 'axios';
-import countries from 'i18n-iso-countries';
-import deLocale from 'i18n-iso-countries/langs/de.json';
-import enLocale from 'i18n-iso-countries/langs/en.json';
+import { useState, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -23,20 +19,13 @@ import {
   Student,
   Lecturer,
   Employee,
+  User,
 } from '/Users/sanojananandarajah/Projekte/Agile/team-11-frontend-personal-data/src/@types/UserData.tsx';
 import useAxiosInstance from '@hooks/useAxiosInstance.ts';
 
-countries.registerLocale(deLocale);
-countries.registerLocale(enLocale);
-
 const PersonalDataComponent = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
-  const { t, i18n } = useTranslation();
-  const countryOptions = useMemo(() => {
-    return Object.values(
-      countries.getNames(i18n.language === 'de' ? 'de' : 'en')
-    );
-  }, [i18n.language]);
+  const { t } = useTranslation();
   const user = useUser();
 
   const axiosInstance = useAxiosInstance('https://sau-portal.de/team-11-api');
@@ -49,9 +38,35 @@ const PersonalDataComponent = () => {
       try {
         const userId = user.getUserId();
         if (!userId) return;
+
         const response = await axiosInstance.get(`/api/v1/users/${userId}`);
         console.log('API Response:', response.data);
-        setUserData(response.data);
+
+        switch (user.getRole()?.toLowerCase()) {
+          case 'student': {
+            const student = new Student(response.data);
+            setUserData(student);
+            break;
+          }
+
+          case 'lecturer': {
+            const lecturer = new Lecturer(response.data);
+            setUserData(lecturer);
+            break;
+          }
+
+          case 'employee': {
+            const employee = new Employee(response.data);
+            setUserData(employee);
+            break;
+          }
+
+          default: {
+            const defaultUser = new User(response.data);
+            setUserData(defaultUser);
+            break;
+          }
+        }
       } catch (error) {
         console.error('API Error:', error);
       }
@@ -59,50 +74,25 @@ const PersonalDataComponent = () => {
 
     fetchUserData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // <- nur einmal beim Mount
+  }, []);
+
   console.log(user.getRole());
-/*
-  useEffect(() => {
-    if (user.getRole() === 'student') {
-      // @ts-ignore
-      setUserData(
-        new Student({
-          id: 'b7acb825-4e70-49e4-84a1-bf5dc7c8f509',
-          dateOfBirth: '2000-01-01',
-          address: 'Test Address 1',
-          phoneNumber: '123456789',
-          username: 'test-stud@sau-portal.de',
-          firstName: 'Test',
-          lastName: 'Stud',
-          email: 'test-stud@sau-portal.de',
-          matriculationNumber: '123456',
-          degreeProgram: 'Computer Science',
-          semester: 1,
-          studyStatus: 'ENROLLED',
-          cohort: 'BIN-T23-F4',
-          role: user.getRole(),
-        })
-      );
-    }
-  }, [user]);+
-
- */
-
 
   return (
     <>
+      {/* 1st Box with AcademicTitle, Salutation,  */}
       <Box sx={{ display: 'flex', gap: 2 }}>
-        {/* Editierbares Feld */}
         <FormControl sx={{ width: 155, mb: 2 }}>
           <FormLabel>{t('pages.personalData.academicTitle')}</FormLabel>
           <Autocomplete
-            placeholder="Titel*"
+            placeholder={userData?.title || 'Titel*'}
             options={['Prof.', 'Dr.', 'Prof. Dr.']}
             disableClearable
             slotProps={{
               input: { readOnly: true },
             }}
             sx={{ height: 45 }}
+            value={userData?.title || ''}
             readOnly
           />
         </FormControl>
@@ -143,16 +133,14 @@ const PersonalDataComponent = () => {
       </Box>
       <Box sx={{ display: 'flex', gap: 2 }}>
         <FormControl sx={{ width: 325, mb: 2 }}>
-          <FormLabel>{t('pages.personalData.nationality')}</FormLabel>
-          <Autocomplete
-            placeholder="Titel*"
-            options={countryOptions}
-            value={
-              countries.getNames(i18n.language === 'de' ? 'de' : 'en')['DE']
-            }
-            disableClearable
+          <FormLabel>{t('pages.personalData.email')}</FormLabel>
+          <Input
+            color="neutral"
+            size="lg"
+            placeholder="max.mustermann@mustermail.de"
+            value={user.getEmail()}
+            type="email"
             readOnly
-            sx={{ height: 45 }}
           />
         </FormControl>
         <FormControl sx={{ width: 272, mb: 2 }}>
@@ -183,19 +171,7 @@ const PersonalDataComponent = () => {
           />
         </FormControl>
       </Box>
-      <Box sx={{ display: 'flex', gap: 2 }}>
-        <FormControl sx={{ width: 325, mb: 2 }}>
-          <FormLabel>{t('pages.personalData.email')}</FormLabel>
-          <Input
-            color="neutral"
-            size="lg"
-            placeholder="max.mustermann@mustermail.de"
-            value={user.getEmail()}
-            type="email"
-            readOnly
-          />
-        </FormControl>
-      </Box>
+      <Box sx={{ display: 'flex', gap: 2 }}></Box>
       <Divider sx={{ mt: 2, mb: 2 }} />
       <Box sx={{ display: 'flex', gap: 2 }}>
         <FormControl sx={{ width: 325, mb: 2 }}>
@@ -226,9 +202,9 @@ const PersonalDataComponent = () => {
               type="number"
               color="neutral"
               size="lg"
-              placeholder="Entenhausen"
+              placeholder="123456"
               readOnly
-              value="12345"
+              value={userData?.postalCode}
             />
           </FormControl>
           <FormControl sx={{ width: 272, mb: 2 }}>
@@ -238,7 +214,7 @@ const PersonalDataComponent = () => {
               size="lg"
               placeholder="Entenhausen"
               readOnly
-              value="Entenhausen"
+              value={userData?.city}
             />
           </FormControl>
         </>
