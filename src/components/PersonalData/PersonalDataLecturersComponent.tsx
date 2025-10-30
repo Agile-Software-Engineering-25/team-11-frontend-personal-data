@@ -9,8 +9,13 @@ import {
   Typography,
 } from '@mui/joy';
 import { useTranslation } from 'react-i18next';
+import type { UserData } from '@/@types/UserData.tsx';
 
-const PersonalDataLecturersComponent = () => {
+interface Props {
+  userData: UserData | null;
+}
+
+const PersonalDataLecturersComponent = ({ userData }: Props) => {
   const { t } = useTranslation();
   return (
     <Accordion>
@@ -39,22 +44,20 @@ const PersonalDataLecturersComponent = () => {
             <Input
               color="neutral"
               size="lg"
-              placeholder="Reinigung"
+              placeholder="Informatik"
               readOnly
-              value="Informatik"
+              value={userData?.fieldChair}
             />
           </FormControl>
 
           <FormControl sx={{ width: '100%' }}>
-            <FormLabel>
-              {t('pages.personalData.academicTitle')}
-            </FormLabel>
+            <FormLabel>{t('pages.personalData.academicTitle')}</FormLabel>
             <Input
               color="neutral"
               size="lg"
-              placeholder="B-123"
+              placeholder="Prof. Dr."
               readOnly
-              value="Prof. Dr."
+              value={userData?.title}
             />
           </FormControl>
 
@@ -67,7 +70,7 @@ const PersonalDataLecturersComponent = () => {
               size="lg"
               placeholder="Vollzeit"
               readOnly
-              value="Teilzeit"
+              value={userData?.employmentStatus}
             />
           </FormControl>
         </Box>

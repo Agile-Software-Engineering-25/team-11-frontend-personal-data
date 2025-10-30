@@ -9,8 +9,13 @@ import {
   Typography,
 } from '@mui/joy';
 import { useTranslation } from 'react-i18next';
+import { type UserData } from '@/@types/UserData';
 
-const PersonalDataStudentComponent = () => {
+interface Props {
+  userData: UserData | null;
+}
+
+const PersonalDataStudentComponent = ({ userData }: Props) => {
   const { t } = useTranslation();
   return (
     <Accordion>
@@ -39,7 +44,7 @@ const PersonalDataStudentComponent = () => {
               size="lg"
               placeholder="ENROLLED"
               readOnly
-              value="ENROLLED"
+              value={userData?.studyStatus}
             />
           </FormControl>
 
@@ -52,7 +57,7 @@ const PersonalDataStudentComponent = () => {
               size="lg"
               placeholder="6"
               readOnly
-              value="6"
+              value={userData?.semester}
             />
           </FormControl>
 
@@ -65,7 +70,7 @@ const PersonalDataStudentComponent = () => {
               size="lg"
               placeholder="123456"
               readOnly
-              value="123456"
+              value={userData?.matriculationNumber}
             />
           </FormControl>
 
@@ -83,7 +88,7 @@ const PersonalDataStudentComponent = () => {
               size="lg"
               placeholder="Informatik"
               readOnly
-              value="BSc Informatik"
+              value={userData?.degreeProgram}
             />
           </FormControl>
 
@@ -96,7 +101,7 @@ const PersonalDataStudentComponent = () => {
               size="lg"
               placeholder="2023"
               readOnly
-              value="2023"
+              value={userData?.cohort}
             />
           </FormControl>
         </Box>
