@@ -1,4 +1,4 @@
-import { Box, Typography, Sheet } from '@mui/joy';
+import { Box, Typography, Sheet, ButtonGroup, Button } from '@mui/joy';
 import LanguageSelectorComponent from '@components/LanguageSelectorComponent/LanguageSelectorComponent.tsx';
 import { useTranslation } from 'react-i18next';
 import countries from 'i18n-iso-countries';
@@ -42,6 +42,38 @@ const PersonalData = () => {
       </Box>
       <br />
       <PersonalDataComponent />
+      <ButtonGroup
+        spacing={1}
+        sx={{
+          mt: 2,
+          display: 'flex',
+          justifyContent: 'flex-end',
+        }}
+      >
+        <Button
+          variant="soft"
+          color="danger"
+          sx={{
+            textTransform: 'none',
+            px: 2,
+            minWidth: 120, // <-- sorgt für gleichbleibende Größe
+          }}
+        >
+          {t('common.back')}
+        </Button>
+
+        <Button
+          variant="solid"
+          color="primary"
+          sx={{
+            textTransform: 'none',
+            px: 2,
+            minWidth: 120, // <-- gleiche Breite
+          }}
+        >
+          {t('common.edit')}
+        </Button>
+      </ButtonGroup>
     </Sheet>
   );
 };

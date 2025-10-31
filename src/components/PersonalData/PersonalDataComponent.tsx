@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import {
   Box,
-  Button,
-  ButtonGroup,
   Divider,
   FormControl,
   FormLabel,
@@ -11,7 +9,7 @@ import {
 } from '@mui/joy';
 import PersonalDataStudent from '@components/PersonalData/PersonalDataStudentComponent.tsx';
 import PersonalDataLecturersComponent from '@components/PersonalData/PersonalDataLecturersComponent.tsx';
-import PersonalDataEmployeeComponent from '@components/PersonalData/PersonalDataEmployee.tsx';
+import PersonalDataEmployeeComponent from '@components/PersonalData/PersonalDataEmployeeComponent.tsx';
 import useUser from '@/hooks/useUser';
 import { useTranslation } from 'react-i18next';
 import {
@@ -96,21 +94,7 @@ const PersonalDataComponent = () => {
             readOnly
           />
         </FormControl>
-        <FormControl sx={{ width: 155, mb: 2 }}>
-          <FormLabel>{t('pages.personalData.salutation')}</FormLabel>
-          <Autocomplete
-            placeholder="Anrede*"
-            options={['Herr', 'Frau', 'Divers']}
-            disableClearable
-            slotProps={{
-              input: { readOnly: true },
-            }}
-            sx={{ height: 45 }}
-            value="Herr"
-            readOnly
-          />
-        </FormControl>
-        <FormControl sx={{ width: 272, mb: 2 }}>
+        <FormControl sx={{ width: 341, mb: 2 }}>
           <FormLabel>{t('pages.personalData.firstName')}</FormLabel>
           <Input
             color="neutral"
@@ -120,7 +104,7 @@ const PersonalDataComponent = () => {
             value={userData?.firstName}
           />
         </FormControl>
-        <FormControl sx={{ width: 272, mb: 2 }}>
+        <FormControl sx={{ width: 341, mb: 2 }}>
           <FormLabel>{t('pages.personalData.lastName')}</FormLabel>
           <Input
             color="neutral"
@@ -132,7 +116,7 @@ const PersonalDataComponent = () => {
         </FormControl>
       </Box>
       <Box sx={{ display: 'flex', gap: 2 }}>
-        <FormControl sx={{ width: 325, mb: 2 }}>
+        <FormControl sx={{ width: 326, mb: 2 }}>
           <FormLabel>{t('pages.personalData.email')}</FormLabel>
           <Input
             color="neutral"
@@ -143,7 +127,7 @@ const PersonalDataComponent = () => {
             readOnly
           />
         </FormControl>
-        <FormControl sx={{ width: 272, mb: 2 }}>
+        <FormControl sx={{ width: 255, mb: 2 }}>
           <FormLabel>{t('pages.personalData.birthday')}</FormLabel>
           <Input
             color="neutral"
@@ -159,7 +143,7 @@ const PersonalDataComponent = () => {
             }
           />
         </FormControl>
-        <FormControl sx={{ width: 272, mb: 2 }}>
+        <FormControl sx={{ width: 255, mb: 2 }}>
           <FormLabel>{t('pages.personalData.telephone')}</FormLabel>
           <Input
             color="neutral"
@@ -174,7 +158,7 @@ const PersonalDataComponent = () => {
       <Box sx={{ display: 'flex', gap: 2 }}></Box>
       <Divider sx={{ mt: 2, mb: 2 }} />
       <Box sx={{ display: 'flex', gap: 2 }}>
-        <FormControl sx={{ width: 325, mb: 2 }}>
+        <FormControl sx={{ width: 326, mb: 2 }}>
           <FormLabel>{t('pages.personalData.street')}</FormLabel>
           <Input
             color="neutral"
@@ -184,7 +168,7 @@ const PersonalDataComponent = () => {
             value={userData?.address}
           />
         </FormControl>
-        <FormControl sx={{ width: 127, mb: 2 }}>
+        <FormControl sx={{ width: 119.5, mb: 2 }}>
           <FormLabel>{t('pages.personalData.houseNumber')}</FormLabel>
           <Input
             type="number"
@@ -196,18 +180,18 @@ const PersonalDataComponent = () => {
           />
         </FormControl>
         <>
-          <FormControl sx={{ width: 127, mb: 2 }}>
+          <FormControl sx={{ width: 119.5, mb: 2 }}>
             <FormLabel>{t('pages.personalData.postalCode')}</FormLabel>
             <Input
               type="number"
               color="neutral"
               size="lg"
-              placeholder="123456"
+              placeholder="12345"
               readOnly
               value={userData?.postalCode}
             />
           </FormControl>
-          <FormControl sx={{ width: 272, mb: 2 }}>
+          <FormControl sx={{ width: 255, mb: 2 }}>
             <FormLabel>{t('pages.personalData.city')}</FormLabel>
             <Input
               color="neutral"
@@ -233,16 +217,6 @@ const PersonalDataComponent = () => {
           <PersonalDataLecturersComponent userData={userData} />
         )}
       </Box>
-      <FormControl sx={{ width: 272, mt: 3 }}>
-        <ButtonGroup>
-          <Button sx={{ textTransform: 'none' }} color="danger">
-            {t('common.back')}
-          </Button>
-          <Button sx={{ textTransform: 'none' }} color="success">
-            {t('common.edit')}
-          </Button>
-        </ButtonGroup>
-      </FormControl>
     </>
   );
 };

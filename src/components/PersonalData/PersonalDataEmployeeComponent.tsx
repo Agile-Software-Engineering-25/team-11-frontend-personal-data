@@ -88,7 +88,10 @@ const PersonalDataEmployeeComponent = ({ userData }: Props) => {
               size="lg"
               placeholder="Vollzeit"
               readOnly
-              value={userData?.workingTimeModel}
+              value={t(
+                'components.personalDataEmployee.working_time_model_options.' +
+                  userData?.workingTimeModel
+              )}
             />
           </FormControl>
         </Box>

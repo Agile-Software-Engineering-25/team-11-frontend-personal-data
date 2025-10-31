@@ -70,7 +70,9 @@ const PersonalDataLecturersComponent = ({ userData }: Props) => {
               size="lg"
               placeholder="Vollzeit"
               readOnly
-              value={userData?.employmentStatus}
+              value={t(
+                `components.personalDataLecturers.employment_status_options.${userData?.employmentStatus}`
+              )}
             />
           </FormControl>
         </Box>

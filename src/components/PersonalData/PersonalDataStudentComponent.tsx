@@ -44,7 +44,9 @@ const PersonalDataStudentComponent = ({ userData }: Props) => {
               size="lg"
               placeholder="ENROLLED"
               readOnly
-              value={userData?.studyStatus}
+              value={t(
+                `components.personalDataStudent.study_status_options.${userData?.studyStatus}`
+              )}
             />
           </FormControl>
 
@@ -88,7 +90,9 @@ const PersonalDataStudentComponent = ({ userData }: Props) => {
               size="lg"
               placeholder="Informatik"
               readOnly
-              value={userData?.degreeProgram}
+              value={t(
+                `components.personalDataStudent.study_options.${userData?.degreeProgram}`
+              )}
             />
           </FormControl>
 

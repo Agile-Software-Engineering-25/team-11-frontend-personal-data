@@ -53,7 +53,12 @@
         "Sports Science",
         "Philosophy",
         "History"
-      ]
+      ],
+      "AnredeOptions": {
+        "MR": "Mr.",
+        "MRS": "Mrs.",
+        "DIVERSE": "Diverse"
+      }
     }
   },
   "components": {
@@ -62,19 +67,61 @@
   "degree_program": "Degree Program",
   "semester": "Semester",
   "study_status": "Study Status",
-  "cohort": "Cohort"
+  "cohort": "Cohort",
+  "department_options": {
+    "Department of Computer Science": "Computer Science",
+    "Department of Chemistry": "Chemistry",
+    "Department of Engineering": "Engineering",
+    "Department of Business": "Business"
+  },
+  "study_options": {
+    "Business Informatics": "Business Informatics",
+    "Computer Science": "Computer Science",
+    "Analytical Chemistry": "Analytical Chemistry",
+    "Organic Chemistry": "Organic Chemistry",
+    "Electrical Engineering": "Electrical Engineering",
+    "Mechanical Engineering": "Mechanical Engineering",
+    "Business Administration": "Business Administration",
+    "Economics": "Economics"
+  },
+  "study_status_options": {
+    "ENROLLED": "Enrolled",
+    "REGISTERED": "Registered",
+    "ON_LEAVE": "On Leave",
+    "GRADUATED": "Graduated",
+    "EXMATRICTULATED": "Exmatriculated"
+  }
 },
 "personalDataEmployee": {
   "Employee": "Employee",
   "employee_number": "Employee Number",
   "department": "Department",
   "office_number": "Office Number",
-  "working_time_model": "Working Time Model"
+  "working_time_model": "Working Time Model",
+  "working_time_model_options": {
+    "FULL_TIME": "Full-time",
+    "PART_TIME": "Part-time",
+    "MINI_JOB": "Mini job",
+    "TEMPORARY": "Temporary",
+    "INTERNSHIP": "Internship",
+    "CONTRACT": "Contract"
+  }
 },
 "personalDataLecturers": {
   "Lecturer": "Lecturer",
   "field_chair": "Field / Chair",
-  "employment_status": "Employment Status"
+  "employment_status": "Employment Status",
+  "employment_status_options": {
+    "FULL_TIME_PERMANENT": "Full-time",
+    "PART_TIME_PERMANENT": "Part-time",
+    "EXTERNAL": "External",
+    "VISITING": "Visiting Scholar",
+    "CONTRACT": "Contract",
+    "EMERITUS": "Emeritus",
+    "ASSISTANT": "Assistant",
+    "ASSOCIATE": "Associate",
+    "PROFESSOR": "Professor"
+  }
 }
   },
   "common": {
