@@ -18,7 +18,7 @@ import {
   Lecturer,
   Employee,
   User,
-} from '/Users/sanojananandarajah/Projekte/Agile/team-11-frontend-personal-data/src/@types/UserData.tsx';
+} from '@/@types/UserData.tsx';
 import useAxiosInstance from '@hooks/useAxiosInstance.ts';
 
 const PersonalDataComponent = () => {
