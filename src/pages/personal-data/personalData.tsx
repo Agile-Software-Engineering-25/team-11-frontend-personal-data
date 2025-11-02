@@ -1,5 +1,4 @@
-import { Box, Typography, Sheet } from '@mui/joy';
-import LanguageSelectorComponent from '@components/LanguageSelectorComponent/LanguageSelectorComponent.tsx';
+import { Box, Typography, Sheet, ButtonGroup, Button } from '@mui/joy';
 import { useTranslation } from 'react-i18next';
 import countries from 'i18n-iso-countries';
 import deLocale from 'i18n-iso-countries/langs/de.json';
@@ -24,15 +23,53 @@ const PersonalData = () => {
           padding: 1.5,
         }}
       >
-        <Box sx={{ width: 290, flexShrink: 0 }}>
-          <Typography level="h1">{t('pages.personalData.title')}</Typography>
-        </Box>
-        <Box sx={{ minHeight: 68, width: 175, flexShrink: 0 }}>
-          <LanguageSelectorComponent />
+        <Box sx={{ width: 500, flexShrink: 0, minWidth: 0 }}>
+          <Typography
+            level="h1"
+            sx={{
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            {t('pages.personalData.title')}
+          </Typography>
         </Box>
       </Box>
       <br />
       <PersonalDataComponent />
+      <ButtonGroup
+        spacing={1}
+        sx={{
+          mt: 2,
+          display: 'flex',
+          justifyContent: 'flex-end',
+        }}
+      >
+        <Button
+          variant="soft"
+          color="danger"
+          sx={{
+            textTransform: 'none',
+            px: 2,
+            minWidth: 120, // <-- sorgt für gleichbleibende Größe
+          }}
+        >
+          {t('common.back')}
+        </Button>
+
+        <Button
+          variant="solid"
+          color="primary"
+          sx={{
+            textTransform: 'none',
+            px: 2,
+            minWidth: 120, // <-- gleiche Breite
+          }}
+        >
+          {t('common.edit')}
+        </Button>
+      </ButtonGroup>
     </Sheet>
   );
 };

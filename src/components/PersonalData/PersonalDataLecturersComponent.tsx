@@ -9,8 +9,13 @@ import {
   Typography,
 } from '@mui/joy';
 import { useTranslation } from 'react-i18next';
+import type { UserData } from '@/@types/UserData.tsx';
 
-const PersonalDataLecturersComponent = () => {
+interface Props {
+  userData: UserData | null;
+}
+
+const PersonalDataLecturersComponent = ({ userData }: Props) => {
   const { t } = useTranslation();
   return (
     <Accordion>
@@ -28,59 +33,46 @@ const PersonalDataLecturersComponent = () => {
             gridTemplateColumns: {
               xs: '1fr',
               sm: '1fr 1fr',
-              md: 'repeat(4, minmax(200px, 1fr))',
+              md: 'repeat(3, minmax(200px, 1fr))',
             },
           }}
         >
           <FormControl sx={{ width: '100%' }}>
             <FormLabel>
-              {t('components.personalDataEmployee.department')}
+              {t('components.personalDataLecturers.field_chair')}
             </FormLabel>
             <Input
               color="neutral"
               size="lg"
-              placeholder="Reinigung"
+              placeholder="Informatik"
               readOnly
-              value="Gebäudereinigung"
+              value={userData?.fieldChair}
+            />
+          </FormControl>
+
+          <FormControl sx={{ width: '100%' }}>
+            <FormLabel>{t('pages.personalData.academicTitle')}</FormLabel>
+            <Input
+              color="neutral"
+              size="lg"
+              placeholder="Prof. Dr."
+              readOnly
+              value={userData?.title}
             />
           </FormControl>
 
           <FormControl sx={{ width: '100%' }}>
             <FormLabel>
-              {t('components.personalDataEmployee.office_number')}
-            </FormLabel>
-            <Input
-              color="neutral"
-              size="lg"
-              placeholder="B-123"
-              readOnly
-              value="B-123"
-            />
-          </FormControl>
-
-          <FormControl sx={{ width: '100%' }}>
-            <FormLabel>
-              {t('components.personalDataEmployee.employeeID')}
-            </FormLabel>
-            <Input
-              color="neutral"
-              size="lg"
-              placeholder="123456"
-              readOnly
-              value="123456"
-            />
-          </FormControl>
-
-          <FormControl sx={{ width: '100%' }}>
-            <FormLabel>
-              {t('components.personalDataEmployee.working_time_modell')}
+              {t('components.personalDataLecturers.employment_status')}
             </FormLabel>
             <Input
               color="neutral"
               size="lg"
               placeholder="Vollzeit"
               readOnly
-              value="Teilzeit"
+              value={t(
+                `components.personalDataLecturers.employment_status_options.${userData?.employmentStatus}`
+              )}
             />
           </FormControl>
         </Box>

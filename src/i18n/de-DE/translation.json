@@ -15,7 +15,7 @@
     "personalData": {
       "title": "Persönliche Daten",
       "description": "Hier werden die personenbezogenen Daten des Benutzers angezeigt.",
-      "acardemicTitle": "Akademischer Titel",
+      "academicTitle": "Akademischer Titel",
       "name": "Name",
       "email": "E-Mail",
       "address": "Adresse",
@@ -53,30 +53,76 @@
         "Sportwissenschaft",
         "Philosophie",
         "Geschichte"
-      ]
+      ],
+      "AnredeOptions": {
+        "MR": "Herr",
+        "MRS": "Frau",
+        "DIVERSE": "Divers"
+      }
     }
   },
   "components": {
     "personalDataStudent": {
-      "courseofstudy": "Studiengang",
+      "matriculation_number": "Matrikelnummer",
+      "degree_program": "Studiengang",
       "semester": "Semester",
-      "studentID": "Matrikelnummer",
-      "status": "Status",
-      "cohort": "Jahrgang"
+      "study_status": "Studienstatus",
+      "cohort": "Jahrgang",
+      "study_status_options": {
+        "ENROLLED": "Immatrikuliert",
+        "REGISTERED": "Registriert",
+        "ON_LEAVE": "Beurlaubt",
+        "GRADUATED": "Absolvent",
+        "EXMATRICTULATED": "Exmatrikuliert"
+      },
+      "study_options": {
+        "Business Informatics": "Wirtschaftsinformatik",
+        "Computer Science": "Informatik",
+        "Analytical Chemistry": "Analytische Chemie",
+        "Organic Chemistry": "Organische Chemie",
+        "Electrical Engineering": "Elektrotechnik",
+        "Mechanical Engineering": "Maschinenbau",
+        "Business Administration": "Betriebswirtschaftslehre",
+        "Economics": "Volkswirtschaftslehre"
+      }
     },
     "personalDataEmployee": {
       "Employee": "Mitarbeiter",
-      "employeeID": "Mitarbeiternummer",
+      "employee_number": "Mitarbeitendennummer",
       "department": "Abteilung",
-      "position": "Position"
+      "department_options": {
+        "Department of Computer Science": "Informatik",
+        "Department of Chemistry": "Chemie",
+        "Department of Engineering": "Ingenieurwesen",
+        "Department of Business": "Wirtschaft"
+      },
+      "office_number": "Büro-Nummer",
+      "working_time_model": "Arbeitszeitmodell",
+      "working_time_model_options": {
+        "FULL_TIME": "Vollzeit",
+        "PART_TIME": "Teilzeit",
+        "MINI_JOB": "Minijob",
+        "TEMPORARY": "Befristet",
+        "INTERNSHIP": "Praktikant",
+        "CONTRACT": "Vertrag"
+      }
     },
     "personalDataLecturers": {
       "Lecturer": "Dozent",
-      "department": "Bereich",
-      "position": "Position",
-      "employeeID": "Dozentennummer"
+      "field_chair": "Fachgebiet / Lehrstuhl",
+      "employment_status": "Beschäftigungsstatus",
+      "employment_status_options": {
+        "FULL_TIME_PERMANENT": "Vollzeit",
+        "PART_TIME_PERMANENT": "Teilzeit",
+        "EXTERNAL": "Extern",
+        "VISITING": "Gastwissenschaftler",
+        "CONTRACT": "Vertrag",
+        "EMERITUS": "Emeritus",
+        "ASSISTANT": "Assistent",
+        "ASSOCIATE": "Assoziiert",
+        "PROFESSOR": "Professor"
     }
-  },
+  }},
   "common": {
     "back": "Zurück",
     "edit": "Bearbeiten",

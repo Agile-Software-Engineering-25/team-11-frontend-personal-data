@@ -9,8 +9,13 @@ import {
   Typography,
 } from '@mui/joy';
 import { useTranslation } from 'react-i18next';
+import type { UserData } from '@/@types/UserData.tsx';
 
-const PersonalDataEmployeeComponent = () => {
+interface Props {
+  userData: UserData | null;
+}
+
+const PersonalDataEmployeeComponent = ({ userData }: Props) => {
   const { t } = useTranslation();
   return (
     <Accordion>
@@ -41,7 +46,7 @@ const PersonalDataEmployeeComponent = () => {
               size="lg"
               placeholder="Reinigung"
               readOnly
-              value="Gebäudereinigung"
+              value={userData?.department}
             />
           </FormControl>
 
@@ -54,20 +59,20 @@ const PersonalDataEmployeeComponent = () => {
               size="lg"
               placeholder="B-123"
               readOnly
-              value="B-123"
+              value={userData?.officeNumber}
             />
           </FormControl>
 
           <FormControl sx={{ width: '100%' }}>
             <FormLabel>
-              {t('components.personalDataEmployee.employeeID')}
+              {t('components.personalDataEmployee.employee_number')}
             </FormLabel>
             <Input
               color="neutral"
               size="lg"
               placeholder="123456"
               readOnly
-              value="123456"
+              value={userData?.employeeNumber}
             />
           </FormControl>
           <FormControl
@@ -76,14 +81,17 @@ const PersonalDataEmployeeComponent = () => {
             }}
           >
             <FormLabel>
-              {t('components.personalDataEmployee.working_time_modell')}
+              {t('components.personalDataEmployee.working_time_model')}
             </FormLabel>
             <Input
               color="neutral"
               size="lg"
               placeholder="Vollzeit"
               readOnly
-              value="Teilzeit"
+              value={t(
+                'components.personalDataEmployee.working_time_model_options.' +
+                  userData?.workingTimeModel
+              )}
             />
           </FormControl>
         </Box>

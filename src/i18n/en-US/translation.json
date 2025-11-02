@@ -15,7 +15,7 @@
     "personalData": {
       "title": "Personal Data",
       "description": "Personal Data is shown here.",
-      "acardemicTitle": "academic Title",
+      "academicTitle": "academic Title",
       "name": "Name",
       "email": "E-Mail",
       "address": "Adresse",
@@ -53,29 +53,75 @@
         "Sports Science",
         "Philosophy",
         "History"
-      ]
+      ],
+      "AnredeOptions": {
+        "MR": "Mr.",
+        "MRS": "Mrs.",
+        "DIVERSE": "Diverse"
+      }
     }
   },
   "components": {
 "personalDataStudent": {
-  "courseofstudy": "Course of Study",
+  "matriculation_number": "Matriculation Number",
+  "degree_program": "Degree Program",
   "semester": "Semester",
-  "studentID": "Matriculation Number",
-  "status": "Status",
-  "cohort": "Cohort"
+  "study_status": "Study Status",
+  "cohort": "Cohort",
+  "department_options": {
+    "Department of Computer Science": "Computer Science",
+    "Department of Chemistry": "Chemistry",
+    "Department of Engineering": "Engineering",
+    "Department of Business": "Business"
+  },
+  "study_options": {
+    "Business Informatics": "Business Informatics",
+    "Computer Science": "Computer Science",
+    "Analytical Chemistry": "Analytical Chemistry",
+    "Organic Chemistry": "Organic Chemistry",
+    "Electrical Engineering": "Electrical Engineering",
+    "Mechanical Engineering": "Mechanical Engineering",
+    "Business Administration": "Business Administration",
+    "Economics": "Economics"
+  },
+  "study_status_options": {
+    "ENROLLED": "Enrolled",
+    "REGISTERED": "Registered",
+    "ON_LEAVE": "On Leave",
+    "GRADUATED": "Graduated",
+    "EXMATRICTULATED": "Exmatriculated"
+  }
 },
 "personalDataEmployee": {
   "Employee": "Employee",
-  "employeeID": "Employee Number",
+  "employee_number": "Employee Number",
   "department": "Department",
   "office_number": "Office Number",
-  "working_time_modell": "Working Time Model"
+  "working_time_model": "Working Time Model",
+  "working_time_model_options": {
+    "FULL_TIME": "Full-time",
+    "PART_TIME": "Part-time",
+    "MINI_JOB": "Mini job",
+    "TEMPORARY": "Temporary",
+    "INTERNSHIP": "Internship",
+    "CONTRACT": "Contract"
+  }
 },
 "personalDataLecturers": {
   "Lecturer": "Lecturer",
   "field_chair": "Field / Chair",
-  "titel": "Title",
-  "employee_status": "Employment Status"
+  "employment_status": "Employment Status",
+  "employment_status_options": {
+    "FULL_TIME_PERMANENT": "Full-time",
+    "PART_TIME_PERMANENT": "Part-time",
+    "EXTERNAL": "External",
+    "VISITING": "Visiting Scholar",
+    "CONTRACT": "Contract",
+    "EMERITUS": "Emeritus",
+    "ASSISTANT": "Assistant",
+    "ASSOCIATE": "Associate",
+    "PROFESSOR": "Professor"
+  }
 }
   },
   "common": {
