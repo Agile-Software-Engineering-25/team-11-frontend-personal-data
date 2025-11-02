@@ -1,5 +1,4 @@
 import { Box, Typography, Sheet, ButtonGroup, Button } from '@mui/joy';
-import LanguageSelectorComponent from '@components/LanguageSelectorComponent/LanguageSelectorComponent.tsx';
 import { useTranslation } from 'react-i18next';
 import countries from 'i18n-iso-countries';
 import deLocale from 'i18n-iso-countries/langs/de.json';
@@ -35,9 +34,6 @@ const PersonalData = () => {
           >
             {t('pages.personalData.title')}
           </Typography>
-        </Box>
-        <Box sx={{ minHeight: 68, width: 175, flexShrink: 0 }}>
-          <LanguageSelectorComponent />
         </Box>
       </Box>
       <br />

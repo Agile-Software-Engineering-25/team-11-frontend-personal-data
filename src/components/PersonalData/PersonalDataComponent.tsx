@@ -5,7 +5,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Autocomplete,
 } from '@mui/joy';
 import PersonalDataStudent from '@components/PersonalData/PersonalDataStudentComponent.tsx';
 import PersonalDataLecturersComponent from '@components/PersonalData/PersonalDataLecturersComponent.tsx';
@@ -82,16 +81,12 @@ const PersonalDataComponent = () => {
       <Box sx={{ display: 'flex', gap: 2 }}>
         <FormControl sx={{ width: 155, mb: 2 }}>
           <FormLabel>{t('pages.personalData.academicTitle')}</FormLabel>
-          <Autocomplete
-            placeholder={userData?.title || 'Titel*'}
-            options={['Prof.', 'Dr.', 'Prof. Dr.']}
-            disableClearable
-            slotProps={{
-              input: { readOnly: true },
-            }}
-            sx={{ height: 45 }}
-            value={userData?.title || ''}
+          <Input
+            color="neutral"
+            size="lg"
+            placeholder="Prof. Dr."
             readOnly
+            value={userData?.title}
           />
         </FormControl>
         <FormControl sx={{ width: 341, mb: 2 }}>
@@ -171,7 +166,6 @@ const PersonalDataComponent = () => {
         <FormControl sx={{ width: 119.5, mb: 2 }}>
           <FormLabel>{t('pages.personalData.houseNumber')}</FormLabel>
           <Input
-            type="number"
             color="neutral"
             size="lg"
             placeholder="42"
@@ -183,7 +177,6 @@ const PersonalDataComponent = () => {
           <FormControl sx={{ width: 119.5, mb: 2 }}>
             <FormLabel>{t('pages.personalData.postalCode')}</FormLabel>
             <Input
-              type="number"
               color="neutral"
               size="lg"
               placeholder="12345"
