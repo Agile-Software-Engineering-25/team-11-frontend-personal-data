@@ -30,35 +30,12 @@
       "street": "Straße",
       "houseNumber": "Nummer",
       "postalCode": "Postleitzahl",
-      "courseOptions": [
-        "Informatik",
-        "Wirtschaftsinformatik",
-        "Elektrotechnik",
-        "Maschinenbau",
-        "Betriebswirtschaftslehre",
-        "Volkswirtschaftslehre",
-        "Mathematik",
-        "Physik",
-        "Chemie",
-        "Biologie",
-        "Medizin",
-        "Psychologie",
-        "Soziologie",
-        "Politikwissenschaft",
-        "Rechtswissenschaft",
-        "Architektur",
-        "Design",
-        "Kommunikationswissenschaft",
-        "Journalismus",
-        "Sportwissenschaft",
-        "Philosophie",
-        "Geschichte"
-      ],
       "AnredeOptions": {
         "MR": "Herr",
         "MRS": "Frau",
         "DIVERSE": "Divers"
-      }
+      },
+      "parking": "Nutzung eines Parkplatzes"
     }
   },
   "components": {
@@ -126,6 +103,6 @@
   "common": {
     "back": "Zurück",
     "edit": "Bearbeiten",
-    "finish": "Fertig"
+    "save": "Speichern"
   }
 }
