@@ -84,6 +84,11 @@ const PersonalDataComponent = () => {
 
   console.log(user.getRole());
 
+  const handleCancel = () => {
+    setFormData(userData);
+    setIsEditing(false);
+  };
+
   const handleSave = async () => {
     if (!formData || !userData) return;
 
@@ -360,6 +365,7 @@ const PersonalDataComponent = () => {
           },
         }}
       />
+      <Divider sx={{ mt: 2, mb: 2 }} />
       {user.getRole() === 'employee' && (
         <PersonalDataEmployeeComponent userData={userData} />
       )}
@@ -381,27 +387,30 @@ const PersonalDataComponent = () => {
           justifyContent: 'flex-end',
         }}
       >
-        <Button
-          variant="soft"
-          color="danger"
-          sx={{
-            textTransform: 'none',
-            px: 2,
-            width: 120,
-            minWidth: 120,
-            flex: '0 0 120px',
-            height: 40,
-            lineHeight: 1,
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-          }}
-        >
-          {t('common.back')}
-        </Button>
+        {isEditing && (
+          <Button
+            variant="soft"
+            color="danger"
+            onClick={handleCancel}
+            sx={{
+              textTransform: 'none',
+              px: 2,
+              width: 120,
+              minWidth: 120,
+              flex: '0 0 120px',
+              height: 40,
+              lineHeight: 1,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            {t('common.cancel')}
+          </Button>
+        )}
 
         <Button
           color="primary"

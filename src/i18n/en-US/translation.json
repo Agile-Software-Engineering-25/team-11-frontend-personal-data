@@ -127,6 +127,8 @@
   "common": {
     "back": "Back",
     "edit": "Edit",
-    "save": "Save"
+    "save": "Save",
+    "cancel": "Cancel",
+    "loading": "Loading..."
   }
 }

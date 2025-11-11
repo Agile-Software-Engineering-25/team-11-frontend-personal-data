@@ -103,6 +103,8 @@
   "common": {
     "back": "Zurück",
     "edit": "Bearbeiten",
-    "save": "Speichern"
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "loading": "Laden..."
   }
 }
