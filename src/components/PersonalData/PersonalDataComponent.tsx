@@ -162,22 +162,9 @@ const PersonalDataComponent = () => {
   console.log(formData?.drives_car);
   return (
     <>
-      {/* 1st Box with AcademicTitle, Salutation,  */}
+      {/* 1st Box with First and Last Name */}
       <Box sx={{ display: 'flex', gap: 2 }}>
-        <FormControl sx={{ width: 155, mb: 2 }}>
-          <FormLabel>{t('pages.personalData.academicTitle')}</FormLabel>
-          <Input
-            color="neutral"
-            size="lg"
-            placeholder="Prof. Dr."
-            readOnly={!isEditing}
-            value={formData?.title ?? ''}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev!, title: e.target.value }))
-            }
-          />
-        </FormControl>
-        <FormControl sx={{ width: 341, mb: 2 }}>
+        <FormControl sx={{ width: 419, mb: 2 }}>
           <FormLabel>{t('pages.personalData.firstName')}</FormLabel>
           <Input
             color="neutral"
@@ -190,7 +177,7 @@ const PersonalDataComponent = () => {
             }
           />
         </FormControl>
-        <FormControl sx={{ width: 341, mb: 2 }}>
+        <FormControl sx={{ width: 419, mb: 2 }}>
           <FormLabel>{t('pages.personalData.lastName')}</FormLabel>
           <Input
             color="neutral"
