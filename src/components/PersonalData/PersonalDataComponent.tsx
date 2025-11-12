@@ -170,7 +170,7 @@ const PersonalDataComponent = () => {
             color="neutral"
             size="lg"
             placeholder="Max"
-            readOnly={!isEditing}
+            readOnly={true}
             value={formData?.firstName ?? ''}
             onChange={(e) =>
               setFormData((prev) => ({ ...prev!, firstName: e.target.value }))
@@ -187,7 +187,7 @@ const PersonalDataComponent = () => {
             onChange={(e) =>
               setFormData((prev) => ({ ...prev!, lastName: e.target.value }))
             }
-            readOnly={!isEditing}
+            readOnly={true}
           />
         </FormControl>
       </Box>
