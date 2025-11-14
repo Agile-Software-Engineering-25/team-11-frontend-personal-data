@@ -8,6 +8,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Avatar,
 } from '@mui/joy';
 import PersonalDataStudent from '@components/PersonalData/PersonalDataStudentComponent.tsx';
 import PersonalDataLecturersComponent from '@components/PersonalData/PersonalDataLecturersComponent.tsx';
@@ -27,6 +28,7 @@ const PersonalDataComponent = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState<UserData | null>(null);
+  const [profilePictureUrl, setProfilePictureUrl] = useState<string | null>(null);
   const { t } = useTranslation();
   const user = useUser();
 
@@ -78,7 +80,30 @@ const PersonalDataComponent = () => {
       }
     };
 
+    const fetchProfilePicture = async () => {
+      try {
+        const userId = user.getUserId();
+        if (!userId) return;
+
+        const response = await axiosInstance.get(`/api/v1/profile-picture/${userId}`, {
+          responseType: 'blob',
+        });
+
+        const imageUrl = URL.createObjectURL(response.data);
+        setProfilePictureUrl(imageUrl);
+      } catch (error) {
+        console.error('Failed to fetch profile picture:', error);
+      }
+    };
+
     fetchUserData();
+    fetchProfilePicture();
+
+    return () => {
+      if (profilePictureUrl) {
+        URL.revokeObjectURL(profilePictureUrl);
+      }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -162,6 +187,15 @@ const PersonalDataComponent = () => {
   console.log(formData?.drives_car);
   return (
     <>
+      {/* Profile Picture */}
+      <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+        <Avatar
+          src={profilePictureUrl || undefined}
+          alt="Profile Picture"
+          sx={{ width: 120, height: 120 }}
+        />
+      </Box>
+
       {/* 1st Box with First and Last Name */}
       <Box sx={{ display: 'flex', gap: 2 }}>
         <FormControl sx={{ width: 419, mb: 2 }}>
