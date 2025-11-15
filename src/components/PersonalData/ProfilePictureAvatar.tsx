@@ -7,7 +7,7 @@ interface ProfilePictureAvatarProps {
 
 const ProfilePictureAvatar = ({ profilePictureUrl, onClick }: ProfilePictureAvatarProps) => {
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+    <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3, py: 3 }}>
       <Box
         sx={{
           position: 'relative',

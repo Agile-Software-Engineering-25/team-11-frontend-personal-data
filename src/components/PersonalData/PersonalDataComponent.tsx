@@ -54,7 +54,7 @@ const PersonalDataComponent = () => {
 
       {/* First and Last Name */}
       <Box sx={{ display: 'flex', gap: 2 }}>
-        <FormControl sx={{ width: 419, mb: 2 }}>
+        <FormControl sx={{ flex: 1, mb: 2 }}>
           <FormLabel>{t('pages.personalData.firstName')}</FormLabel>
           <Input
             color="neutral"
@@ -65,7 +65,7 @@ const PersonalDataComponent = () => {
             onChange={(e) => setFormData((prev) => ({ ...prev!, firstName: e.target.value }))}
           />
         </FormControl>
-        <FormControl sx={{ width: 419, mb: 2 }}>
+        <FormControl sx={{ flex: 1, mb: 2 }}>
           <FormLabel>{t('pages.personalData.lastName')}</FormLabel>
           <Input
             color="neutral"

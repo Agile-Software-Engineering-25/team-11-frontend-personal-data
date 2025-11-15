@@ -12,26 +12,9 @@ const PersonalData = () => {
 
   return (
     <Sheet sx={{ padding: 2, maxWidth: 900, mx: 'auto', borderRadius: 2 }}>
-      <Box
-        sx={{
-          display: 'flex',
-          gap: 2,
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderRadius: 15,
-          bgcolor: 'background.level3',
-          padding: 1.5,
-        }}
-      >
-        <Box sx={{ width: 500, flexShrink: 0, minWidth: 0 }}>
-          <Typography
-            level="h1"
-            sx={{
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}
-          >
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', bgcolor: 'background.level3', py: 1, px: 2, borderRadius: 15 }}>
+          <Typography level="h2" sx={{ textAlign: 'center', width: '100%' }}>
             {t('pages.personalData.title')}
           </Typography>
         </Box>

@@ -13,7 +13,7 @@
       "temperature": "Temperatur"
     },
     "personalData": {
-      "title": "Persönliche Daten",
+      "title": "Meine Persönliche Daten",
       "description": "Hier werden die personenbezogenen Daten des Benutzers angezeigt.",
       "academicTitle": "Akademischer Titel",
       "name": "Name",
