@@ -1,5 +1,6 @@
 import { Box, Button, IconButton, Modal, Sheet, Typography, Avatar } from '@mui/joy';
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 import useUser from '@/hooks/useUser';
 import useAxiosInstance from '@hooks/useAxiosInstance.ts';
 import axios from 'axios';
@@ -20,65 +21,112 @@ const ProfilePictureModal = ({
   const { t } = useTranslation();
   const user = useUser();
   const axiosInstance = useAxiosInstance('https://sau-portal.de/team-11-api');
+  
+  const [pendingAction, setPendingAction] = useState<'none' | 'delete' | 'upload'>('none');
+  const [pendingFile, setPendingFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
-  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Reset state when modal closes or profilePictureUrl changes
+  useEffect(() => {
+    if (!isOpen) {
+      setPendingAction('none');
+      setPendingFile(null);
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+        setPreviewUrl(null);
+      }
+    }
+  }, [isOpen]);
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    // Clean up previous preview
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+    }
+
+    const newPreviewUrl = URL.createObjectURL(file);
+    setPreviewUrl(newPreviewUrl);
+    setPendingFile(file);
+    setPendingAction('upload');
+  };
+
+  const handleDeleteClick = () => {
+    setPendingAction('delete');
+    setPreviewUrl(null);
+    setPendingFile(null);
+  };
+
+  const handleCancel = () => {
+    if (previewUrl) {
+      URL.revokeObjectURL(previewUrl);
+      setPreviewUrl(null);
+    }
+    setPendingFile(null);
+    setPendingAction('none');
+  };
+
+  const handleSave = async () => {
     const userId = user.getUserId();
     if (!userId) return;
 
-    const previewUrl = URL.createObjectURL(file);
-    onProfilePictureChange(previewUrl);
-
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      console.log('Uploading file:', {
-        name: file.name,
-        size: file.size,
-        type: file.type,
-      });
+      if (pendingAction === 'upload' && pendingFile) {
+        const formData = new FormData();
+        formData.append('file', pendingFile);
 
-      // Remove the Content-Type header - let the browser set it automatically
-      await axiosInstance.post(`/api/v1/profile-picture/${userId}`, formData, {
-        headers: {
-          Authorization: `Bearer ${user.getAccessToken()}`,
-        },
-      });
+        await axiosInstance.post(`/api/v1/profile-picture/${userId}`, formData, {
+          headers: {
+            Authorization: `Bearer ${user.getAccessToken()}`,
+          },
+        });
+        
+        onProfilePictureChange(previewUrl);
+      } else if (pendingAction === 'delete') {
+        await axiosInstance.delete(`/api/v1/profile-picture/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${user.getAccessToken()}`,
+          },
+        });
+        
+        if (profilePictureUrl) {
+          URL.revokeObjectURL(profilePictureUrl);
+        }
+        onProfilePictureChange(null);
+      }
+
+      setPendingAction('none');
+      setPendingFile(null);
+      setPreviewUrl(null);
+      onClose();
     } catch (err) {
       if (axios.isAxiosError(err)) {
-        console.error('Upload failed:', {
+        console.error('Operation failed:', {
           status: err.response?.status,
           data: err.response?.data,
           headers: err.response?.headers,
         });
       } else {
-        console.error('Upload failed:', err);
+        console.error('Operation failed:', err);
       }
-      // Revert preview
-      URL.revokeObjectURL(previewUrl);
-      onProfilePictureChange(profilePictureUrl);
+      
+      // Clean up on error
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+        setPreviewUrl(null);
+      }
+      setPendingFile(null);
+      setPendingAction('none');
     }
   };
 
-  const handleDelete = async () => {
-    const userId = user.getUserId();
-    if (!userId) return;
-    if (profilePictureUrl) URL.revokeObjectURL(profilePictureUrl);
-    onProfilePictureChange(null);
+  const displayUrl = pendingAction === 'upload' ? previewUrl : 
+                     pendingAction === 'delete' ? null : 
+                     profilePictureUrl;
 
-    try {
-      await axiosInstance.delete(`/api/v1/profile-picture/${userId}`, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${user.getAccessToken()}`,
-        },
-      });
-    } catch (err) {
-      console.error('Delete failed:', err);
-    }
-  };
+  const hasChanges = pendingAction !== 'none';
 
   return (
     <Modal
@@ -95,11 +143,11 @@ const ProfilePictureModal = ({
 
         <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
           <Avatar
-            src={profilePictureUrl || undefined}
+            src={displayUrl || undefined}
             alt="Profile Picture"
-            sx={{ width: 130, height: 130, bgcolor: profilePictureUrl ? undefined : 'neutral.300' }}
+            sx={{ width: 130, height: 130, bgcolor: displayUrl ? undefined : 'neutral.300' }}
           >
-            {!profilePictureUrl && (
+            {!displayUrl && (
               <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
                 <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" fill="currentColor" />
                 <path d="M4 20c0-3.313 2.687-6 6-6h4c3.313 0 6 2.687 6 6v1H4v-1z" fill="currentColor" />
@@ -117,17 +165,28 @@ const ProfilePictureModal = ({
           type="file"
           accept="image/*"
           style={{ display: 'none' }}
-          onChange={handleUpload}
+          onChange={handleFileSelect}
         />
 
-        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 2 }}>
-          <Button variant="soft" color="danger" onClick={handleDelete}>
-            {t('common.delete')}
-          </Button>
-          <label htmlFor="profile-upload">
-            <Button component="span">{t('common.upload')}</Button>
-          </label>
-        </Box>
+        {!hasChanges ? (
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 2 }}>
+            <Button variant="soft" color="danger" onClick={handleDeleteClick}>
+              {t('common.delete')}
+            </Button>
+            <label htmlFor="profile-upload">
+              <Button component="span">{t('common.upload')}</Button>
+            </label>
+          </Box>
+        ) : (
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 2 }}>
+            <Button variant="outlined" color="neutral" onClick={handleCancel}>
+              {t('common.cancel')}
+            </Button>
+            <Button variant="solid" color="primary" onClick={handleSave}>
+              {t('common.save')}
+            </Button>
+          </Box>
+        )}
       </Sheet>
     </Modal>
   );
