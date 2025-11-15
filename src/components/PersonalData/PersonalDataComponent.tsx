@@ -199,39 +199,71 @@ const PersonalDataComponent = () => {
     <>
       {/* Profile Picture */}
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
-        <Avatar
-          src={profilePictureUrl || undefined}
-          alt="Profile Picture"
-          onClick={() => setIsProfileModalOpen(true)}
+        <Box
           sx={{
+            position: 'relative',
             width: 120,
             height: 120,
-            bgcolor: profilePictureUrl ? undefined : 'neutral.200',
-            color: 'neutral.700',
             cursor: 'pointer',
+            '&:hover .edit-hover': {
+              opacity: 1,
+            },
           }}
+          onClick={() => setIsProfileModalOpen(true)}
         >
-          {!profilePictureUrl && (
-            <svg
-              width="64"
-              height="64"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z"
-                fill="currentColor"
-              />
-              <path
-                d="M4 20c0-3.313 2.687-6 6-6h4c3.313 0 6 2.687 6 6v1H4v-1z"
-                fill="currentColor"
-              />
-            </svg>
-          )}
-        </Avatar>
+          <Avatar
+            src={profilePictureUrl || undefined}
+            alt="Profile Picture"
+            sx={{
+              width: '100%',
+              height: '100%',
+              bgcolor: profilePictureUrl ? undefined : 'neutral.200',
+              color: 'neutral.700',
+            }}
+          >
+            {!profilePictureUrl && (
+              <svg
+                width="64"
+                height="64"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M4 20c0-3.313 2.687-6 6-6h4c3.313 0 6 2.687 6 6v1H4v-1z"
+                  fill="currentColor"
+                />
+              </svg>
+            )}
+          </Avatar>
+          <Box
+            className="edit-hover"
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(0,0,0,0.45)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              opacity: 0,
+              transition: 'opacity 0.2s ease-in-out',
+              color: 'white',
+              fontSize: 32,
+              pointerEvents: 'none',
+            }}
+          >
+            ✎
+          </Box>
+        </Box>
 
         <Modal
           open={isProfileModalOpen}
@@ -242,73 +274,117 @@ const PersonalDataComponent = () => {
             justifyContent: 'center',
           }}
         >
-          <Sheet variant="outlined" sx={{ width: 520, p: 2, borderRadius: 2 }}>
+          <Sheet
+            variant="outlined"
+            sx={{
+              width: 520,
+              p: 3,
+              borderRadius: 3,
+              boxShadow: 'lg',
+            }}
+          >
+            {/* Header + Close Button */}
             <Box
               sx={{
                 display: 'flex',
                 justifyContent: 'flex-end',
-                gap: 1,
-                alignItems: 'center',
+                mb: 2,
               }}
             >
-              <input
-                id="profile-upload"
-                type="file"
-                accept="image/*"
-                style={{ display: 'none' }}
-                onChange={async (e) => {
-                  const file = e.target.files?.[0];
-                  if (!file) return;
-                  const userId = user.getUserId();
-                  if (!userId) return;
-
-                  // Vorschau sofort anzeigen
-                  const previewUrl = URL.createObjectURL(file);
-                  setProfilePictureUrl(previewUrl);
-
-                  // Upload an API
-                  try {
-                    const formData = new FormData();
-                    formData.append('file', file);
-                    await axiosInstance.post(
-                      `/api/v1/profile-picture/${userId}`,
-                      formData,
-                      {
-                        headers: {
-                          'Content-Type': 'multipart/form-data',
-                          Authorization: `Bearer ${user.getAccessToken()}`,
-                        },
-                      }
-                    );
-                  } catch (err) {
-                    console.error('Upload fehlgeschlagen:', err);
-                  }
-                }}
-              />
-
               <IconButton
                 variant="outlined"
                 size="sm"
                 onClick={() => setIsProfileModalOpen(false)}
-                aria-label="Schließen"
+                aria-label="Close"
               >
                 ✕
               </IconButton>
             </Box>
 
+            {/* Avatar Preview */}
             <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
               <Avatar
                 src={profilePictureUrl || undefined}
-                alt="Profile Picture Large"
-                sx={{ width: 240, height: 240 }}
-              />
+                alt="Profile Picture"
+                sx={{
+                  width: 130,
+                  height: 130,
+                  bgcolor: profilePictureUrl ? undefined : 'neutral.300',
+                  cursor: 'pointer',
+                }}
+                onClick={() => setIsProfileModalOpen(true)}
+              >
+                {!profilePictureUrl && (
+                  <svg
+                    width="64"
+                    height="64"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M4 20c0-3.313 2.687-6 6-6h4c3.313 0 6 2.687 6 6v1H4v-1z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                )}
+              </Avatar>
             </Box>
 
-            <Typography sx={{ textAlign: 'center', mb: 1 }}>
+            <Typography sx={{ textAlign: 'center', mb: 2 }} level="h3">
               {t('pages.personalData.profile_picture')}
             </Typography>
 
-            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+            {/* Hidden Upload Input */}
+            <input
+              id="profile-upload"
+              type="file"
+              accept="image/*"
+              style={{ display: 'none' }}
+              onChange={async (e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+
+                const userId = user.getUserId();
+                if (!userId) return;
+
+                const previewUrl = URL.createObjectURL(file);
+                setProfilePictureUrl(previewUrl);
+
+                try {
+                  const formData = new FormData();
+                  formData.append('file', file);
+                  await axiosInstance.post(
+                    `/api/v1/profile-picture/${userId}`,
+                    formData,
+                    {
+                      headers: {
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${user.getAccessToken()}`,
+                      },
+                    }
+                  );
+                } catch (err) {
+                  console.error('Upload fehlgeschlagen:', err);
+                }
+              }}
+            />
+
+            {/* Action Buttons */}
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: 2,
+                mt: 2,
+              }}
+            >
               {/* Delete Button */}
               <Button
                 variant="soft"
@@ -316,6 +392,9 @@ const PersonalDataComponent = () => {
                 onClick={async () => {
                   const userId = user.getUserId();
                   if (!userId) return;
+                  if (profilePictureUrl)
+                    URL.revokeObjectURL(profilePictureUrl);
+                  setProfilePictureUrl(null);
 
                   try {
                     await axiosInstance.delete(
@@ -336,47 +415,7 @@ const PersonalDataComponent = () => {
               </Button>
 
               {/* Upload Button */}
-              <label
-                htmlFor="profile-upload"
-                style={{ display: 'inline-flex' }}
-              >
-                <input
-                  id="profile-upload"
-                  type="file"
-                  accept="image/*"
-                  style={{ display: 'none' }}
-                  onChange={async (e) => {
-                    const file = e.target.files?.[0];
-                    if (!file) return;
-
-                    const userId = user.getUserId();
-                    if (!userId) return;
-
-                    // Sofortige Vorschau
-                    const previewUrl = URL.createObjectURL(file);
-                    setProfilePictureUrl(previewUrl);
-
-                    // Upload Request
-                    try {
-                      const formData = new FormData();
-                      formData.append('file', file);
-
-                      await axiosInstance.post(
-                        `/api/v1/profile-picture/${userId}`,
-                        formData,
-                        {
-                          headers: {
-                            'Content-Type': 'multipart/form-data',
-                            Authorization: `Bearer ${user.getAccessToken()}`,
-                          },
-                        }
-                      );
-                    } catch (err) {
-                      console.error('Upload fehlgeschlagen:', err);
-                    }
-                  }}
-                />
-
+              <label htmlFor="profile-upload">
                 <Button component="span">{t('common.upload')}</Button>
               </label>
             </Box>
