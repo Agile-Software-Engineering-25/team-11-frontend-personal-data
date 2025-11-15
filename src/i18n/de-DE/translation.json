@@ -35,7 +35,8 @@
         "MRS": "Frau",
         "DIVERSE": "Divers"
       },
-      "parking": "Nutzung eines Parkplatzes"
+      "parking": "Nutzung eines Parkplatzes",
+      "profile_picture": "Profilbild"
     }
   },
   "components": {
@@ -105,6 +106,8 @@
     "edit": "Bearbeiten",
     "save": "Speichern",
     "cancel": "Abbrechen",
-    "loading": "Laden..."
+    "loading": "Laden...",
+    "delete": "Löschen",
+    "upload": "Hochladen"
   }
 }
