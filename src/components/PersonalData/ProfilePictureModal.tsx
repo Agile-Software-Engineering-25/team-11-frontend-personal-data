@@ -2,6 +2,7 @@ import { Box, Button, IconButton, Modal, Sheet, Typography, Avatar } from '@mui/
 import { useTranslation } from 'react-i18next';
 import useUser from '@/hooks/useUser';
 import useAxiosInstance from '@hooks/useAxiosInstance.ts';
+import axios from 'axios';
 
 interface ProfilePictureModalProps {
   isOpen: boolean;
@@ -33,14 +34,31 @@ const ProfilePictureModal = ({
     try {
       const formData = new FormData();
       formData.append('file', file);
+      console.log('Uploading file:', {
+        name: file.name,
+        size: file.size,
+        type: file.type,
+      });
+
+      // Remove the Content-Type header - let the browser set it automatically
       await axiosInstance.post(`/api/v1/profile-picture/${userId}`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${user.getAccessToken()}`,
         },
       });
     } catch (err) {
-      console.error('Upload failed:', err);
+      if (axios.isAxiosError(err)) {
+        console.error('Upload failed:', {
+          status: err.response?.status,
+          data: err.response?.data,
+          headers: err.response?.headers,
+        });
+      } else {
+        console.error('Upload failed:', err);
+      }
+      // Revert preview
+      URL.revokeObjectURL(previewUrl);
+      onProfilePictureChange(profilePictureUrl);
     }
   };
 
