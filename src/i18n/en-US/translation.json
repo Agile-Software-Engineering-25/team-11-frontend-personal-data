@@ -58,7 +58,9 @@
         "MR": "Mr.",
         "MRS": "Mrs.",
         "DIVERSE": "Diverse"
-      }
+      },
+      "parking": "Use of Parking Space",
+      "profile_picture": "Profile Picture"
     }
   },
   "components": {
@@ -129,6 +131,8 @@
     "edit": "Edit",
     "save": "Save",
     "cancel": "Cancel",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "delete": "Delete",
+    "upload": "Upload"
   }
 }

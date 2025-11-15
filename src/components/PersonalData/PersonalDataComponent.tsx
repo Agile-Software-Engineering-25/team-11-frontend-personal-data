@@ -305,7 +305,7 @@ const PersonalDataComponent = () => {
             </Box>
 
             <Typography sx={{ textAlign: 'center', mb: 1 }}>
-              Profilbild
+              {t('pages.personalData.profile_picture')}
             </Typography>
 
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
@@ -318,17 +318,28 @@ const PersonalDataComponent = () => {
                   if (!userId) return;
 
                   try {
-                    await axiosInstance.delete(`/api/v1/profile-picture/${userId}`);
+                    await axiosInstance.delete(
+                      `/api/v1/profile-picture/${userId}`,
+                      {
+                        headers: {
+                          'Content-Type': 'multipart/form-data',
+                          Authorization: `Bearer ${user.getAccessToken()}`,
+                        },
+                      }
+                    );
                   } catch (err) {
-                    console.error('Upload fehlgeschlagen:', err);
+                    console.error('Upload failed:', err);
                   }
                 }}
               >
-                Löschen
+                {t('common.delete')}
               </Button>
 
               {/* Upload Button */}
-              <label htmlFor="profile-upload" style={{ display: 'inline-flex' }}>
+              <label
+                htmlFor="profile-upload"
+                style={{ display: 'inline-flex' }}
+              >
                 <input
                   id="profile-upload"
                   type="file"
@@ -366,7 +377,7 @@ const PersonalDataComponent = () => {
                   }}
                 />
 
-                <Button component="span">Upload</Button>
+                <Button component="span">{t('common.upload')}</Button>
               </label>
             </Box>
           </Sheet>
@@ -519,7 +530,7 @@ const PersonalDataComponent = () => {
       </Box>
       <Divider sx={{ mt: 2, mb: 2 }} />
       <Checkbox
-        label="Nutzung eines Parkplatzes"
+        label={t('pages.personalData.parking')}
         checked={!!formData?.drives_car}
         onChange={(e) =>
           setFormData((prev) => ({ ...prev!, drives_car: e.target.checked }))
